@@ -25,6 +25,7 @@ $this->add_control(
 
 $this->end_controls_section();
 
+// Title & COntent
 $this->start_controls_section(
     'od_section_content',
     [
@@ -61,8 +62,155 @@ $this->add_control(
 );
 
 
+$this->end_controls_section();
+
+// Button
+$this->start_controls_section(
+    'od_section_button',
+    [
+        'label' => __('Button', 'ordainit-toolkit'),
+    ]
+);
 
 
+// $this->add_control(
+//     'od_btn_button_show_icon',
+//     [
+//         'label' => esc_html__('Icon Show/Hide', 'ordainit-toolkit'),
+//         'type' => Controls_Manager::SWITCHER,
+//         'label_on' => esc_html__('Show', 'ordainit-toolkit'),
+//         'label_off' => esc_html__('Hide', 'ordainit-toolkit'),
+//         'return_value' => 'yes',
+//         'default' => 'yes',
+//     ]
+// );
+
+$this->add_control(
+    'od_btn_text',
+    [
+        'label' => esc_html__('Button Text', 'ordainit-toolkit'),
+        'type' => Controls_Manager::TEXT,
+        'default' => esc_html__('Button Text', 'ordainit-toolkit'),
+        'title' => esc_html__('Enter button text', 'ordainit-toolkit'),
+        'label_block' => true,
+    ]
+);
+$this->add_control(
+    'od_btn_link_type',
+    [
+        'label' => esc_html__('Button Link Type', 'ordainit-toolkit'),
+        'type' => Controls_Manager::SELECT,
+        'options' => [
+            '1' => 'Custom Link',
+            '2' => 'Internal Page',
+        ],
+        'default' => '1',
+        'label_block' => true,
+    ]
+);
+
+$this->add_control(
+    'od_btn_link',
+    [
+        'label' => esc_html__('Button link', 'ordainit-toolkit'),
+        'type' => Controls_Manager::URL,
+        'dynamic' => [
+            'active' => true,
+        ],
+        'placeholder' => esc_html__('htods://your-link.com', 'ordainit-toolkit'),
+        'show_external' => false,
+        'default' => [
+            'url' => '#',
+            'is_external' => true,
+            'nofollow' => true,
+            'custom_attributes' => '',
+        ],
+        'condition' => [
+            'od_btn_link_type' => '1',
+        ],
+        'label_block' => true,
+    ]
+);
+$this->add_control(
+    'od_btn_page_link',
+    [
+        'label' => esc_html__('Select Button Page', 'ordainit-toolkit'),
+        'type' => Controls_Manager::SELECT2,
+        'label_block' => true,
+        'options' => od_get_all_pages(),
+        'condition' => [
+            'od_btn_link_type' => '2',
+        ]
+    ]
+);
+
+$this->end_controls_section();
+
+// Thumbnail
+$this->start_controls_section(
+    'od_section_thumbnail',
+    [
+        'label' => __('Thumbnail', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_thumbnail_image',
+    [
+        'label' => esc_html__('Choose Image', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/about/thumb/about-3-1.png',
+        ],
+    ]
+);
+
+$this->end_controls_section();
+
+// Shape
+$this->start_controls_section(
+    'od_section_shape',
+    [
+        'label' => __('Shape', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_shape1_image',
+    [
+        'label' => esc_html__('Choose Shape 1', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/about/shape/rocket.png',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_shape2_image',
+    [
+        'label' => esc_html__('Choose Shape 2', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/svg-img/cloud.png',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_shape3_image',
+    [
+        'label' => esc_html__('Choose Shape 3', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/svg-img/cloud.png',
+        ],
+    ]
+);
 
 $this->end_controls_section();
 
