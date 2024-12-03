@@ -1,3 +1,11 @@
-.it-about-thumb-cloud-1.d-none.d-sm-block img {
+.it-about-style-3 .it-about-thumb-cloud-1 img,
+.it-about-style-3 .it-about-thumb-cloud-2 img {
   max-width: 76px;
+}
+
+.elementor-widget-container .it-hero-sub-thumb img {
+  border: 5px solid #fff;
+  border-radius: 1000px;
+  width: 270px;
+  height: 450px;
 }
