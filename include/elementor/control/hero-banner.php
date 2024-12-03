@@ -72,19 +72,6 @@ $this->start_controls_section(
     ]
 );
 
-
-// $this->add_control(
-//     'od_btn_button_show_icon',
-//     [
-//         'label' => esc_html__('Icon Show/Hide', 'ordainit-toolkit'),
-//         'type' => Controls_Manager::SWITCHER,
-//         'label_on' => esc_html__('Show', 'ordainit-toolkit'),
-//         'label_off' => esc_html__('Hide', 'ordainit-toolkit'),
-//         'return_value' => 'yes',
-//         'default' => 'yes',
-//     ]
-// );
-
 $this->add_control(
     'od_btn_text',
     [
@@ -165,6 +152,20 @@ $this->add_control(
         ],
     ]
 );
+$this->add_control(
+    'od_thumbnail_image_2',
+    [
+        'label' => esc_html__('Choose Image', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/hero/thumb/hero-sm-thumb.jpg',
+        ],
+        'condition' => [
+            'od_design_style' => ['layout-2']
+        ],
+    ]
+);
 
 $this->end_controls_section();
 
@@ -177,7 +178,7 @@ $this->start_controls_section(
 );
 
 $this->add_control(
-    'od_shape1_image',
+    'od_shape_image_1',
     [
         'label' => esc_html__('Choose Shape 1', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -189,7 +190,7 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_shape2_image',
+    'od_shape_image_2',
     [
         'label' => esc_html__('Choose Shape 2', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -201,7 +202,7 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_shape3_image',
+    'od_shape_image_3',
     [
         'label' => esc_html__('Choose Shape 3', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -209,33 +210,214 @@ $this->add_control(
             'url' =>
             ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/svg-img/cloud.png',
         ],
+        'condition' => [
+            'od_design_style' => ['layout-1']
+        ],
     ]
 );
 
 $this->end_controls_section();
 
+// Banner Section Style
 $this->start_controls_section(
-    'section_style',
+    'od_banner_section_style',
     [
-        'label' => __('Style', 'ordainit-toolkit'),
+        'label' => __('Section BG Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
 
 $this->add_control(
-    'text_transform',
+    'od_banner_section_bgcolor',
     [
-        'label' => __('Text Transform', 'ordainit-toolkit'),
-        'type' => Controls_Manager::SELECT,
-        'default' => '',
-        'options' => [
-            '' => __('None', 'ordainit-toolkit'),
-            'uppercase' => __('UPPERCASE', 'ordainit-toolkit'),
-            'lowercase' => __('lowercase', 'ordainit-toolkit'),
-            'capitalize' => __('Capitalize', 'ordainit-toolkit'),
-        ],
+        'label' => esc_html__('Banner BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
-            '{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+            '{{WRAPPER}} .grey-bg' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_section();
+
+// Title & Content Style
+$this->start_controls_section(
+    'od_title_content_style',
+    [
+        'label' => __('Title & Content Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+// Title Style
+$this->add_control(
+    'od_title_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-slider-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_title_typography',
+        'selector' => '{{WRAPPER}} .it-slider-title',
+    ]
+);
+
+// SubTitle Style
+$this->add_control(
+    'od_subtitle_color',
+    [
+        'label' => esc_html__('Subtitle Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-subtitle' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Subtitle Typography', 'ordainit-toolkit'),
+        'name' => 'od_subtitle_typography',
+        'selector' => '{{WRAPPER}} .it-section-subtitle',
+    ]
+);
+
+// Description Style
+$this->add_control(
+    'od_description_color',
+    [
+        'label' => esc_html__('Description Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-hero-title-box p' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Description Typography', 'ordainit-toolkit'),
+        'name' => 'od_description_typography',
+        'selector' => '{{WRAPPER}} .it-hero-title-box p',
+    ]
+);
+
+$this->end_controls_section();
+
+
+
+// Button Style
+$this->start_controls_section(
+    'od_btn_style',
+    [
+        'label' => __('Button Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_btn_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_btn_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_btn_style_normal_color',
+    [
+        'label' => esc_html__('Button Text Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-primary' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_btn_style_normal_bgcolor',
+    [
+        'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-primary' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->start_controls_tab(
+    'od_btn_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_btn_style_hover_color',
+    [
+        'label' => esc_html__('Button Text Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-primary:hover' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_btn_style_hover_bgcolor',
+    [
+        'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-primary:hover' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->end_controls_tabs();
+
+// Button Typography
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Button Typography', 'ordainit-toolkit'),
+        'name' => 'od_button_typography',
+        'selector' => '{{WRAPPER}} .it-btn-primary',
+    ]
+);
+
+$this->end_controls_section();
+
+// Thumbnail Shape Style
+$this->start_controls_section(
+    'od_thumbnail_shape_style',
+    [
+        'label' => __('Thumbnail Shape Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->add_control(
+    'od_thumbnail_shape_bgcolor',
+    [
+        'label' => esc_html__('Shape BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape::before, .it-about-style-3 .it-about-thumb-shape::after' => 'border-color: {{VALUE}}',
+            '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape::after' => 'background-color: {{VALUE}}',
         ],
     ]
 );

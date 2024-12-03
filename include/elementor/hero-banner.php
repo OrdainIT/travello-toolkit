@@ -127,13 +127,84 @@ class Hero_Banner extends Widget_Base
         $od_btn_link = $settings['od_btn_link'];
         $od_btn_page_link = $settings['od_btn_page_link'];
         $od_thumbnail_image = $settings['od_thumbnail_image'];
-        $od_shape1_image = $settings['od_shape1_image'];
-        $od_shape2_image = $settings['od_shape2_image'];
+        $od_thumbnail_image_2 = $settings['od_thumbnail_image_2'];
+        $od_shape_image_1 = $settings['od_shape_image_1'];
+        $od_shape_image_2 = $settings['od_shape_image_2'];
+        $od_shape_image_3 = $settings['od_shape_image_3'];
 
 
 
 ?>
-        <?php if ($settings['od_design_style']  == 'layout-2'): ?>
+        <?php if ($settings['od_design_style']  == 'layout-2'):
+
+            // Link
+            if ('2' == $od_btn_link_type) {
+                $this->add_render_attribute('od-button-arg', 'href', get_permalink($od_btn_page_link));
+                $this->add_render_attribute('od-button-arg', 'target', '_self');
+                $this->add_render_attribute('od-button-arg', 'rel', 'nofollow');
+                $this->add_render_attribute('od-button-arg', 'class', 'it-btn-primary');
+            } else {
+                if (! empty($od_btn_link['url'])) {
+                    $this->add_link_attributes('od-button-arg', $od_btn_link);
+                    $this->add_render_attribute('od-button-arg', 'class', 'it-btn-primary');
+                }
+            }
+        ?>
+
+            <div class="it-hero-area fix it-hero-overlay it-hero-height it-hero-bg p-relative" data-background="assets/img/home-3/hero/hero-bg.jpg" style="background-image: url(&quot;assets/img/home-3/hero/hero-bg.jpg&quot;);">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="it-hero-content-wrap p-relative">
+                                <div class="it-hero-content-shape d-none d-md-block">
+                                    <img src="assets/img/home-3/hero/shape/star.png" alt="">
+                                </div>
+                                <div class="it-hero-title-box mb-30">
+                                    <span class="it-section-subtitle wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".3s"><?php echo od_kses($od_subtitle, 'ordainit-toolkit') ?></span>
+                                    <h3 class="it-section-title mb-20 wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".5s"><?php echo od_kses($od_title, 'ordainit-toolkit') ?></h3>
+                                    <p class="wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".7s"><?php echo od_kses($od_description, 'ordainit-toolkit') ?></p>
+                                </div>
+                                <div class="it-hero-button-area d-flex align-items-center wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".8s">
+                                    <div class="it-hero-action mr-20">
+                                        <a <?php echo $this->get_render_attribute_string('od-button-arg'); ?>>
+                                            <?php echo esc_html($od_btn_text, 'ordainit-toolkit') ?>
+                                        </a>
+                                    </div>
+                                    <div class="it-hero-customer-box-wrap d-none d-sm-block">
+                                        <div class="it-hero-customer-box d-flex align-items-center">
+                                            <div class="it-hero-customer-thumb mr-15">
+                                                <img src="assets/img/home-3/hero/shape/customer.png" alt="">
+                                            </div>
+                                            <div class="it-hero-customer-text">
+                                                <span>MORE THAN&nbsp;10K+<br>TRUSTED CUSTOMERS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="it-hero-thumb-box p-relative">
+                                <div class="it-hero-thumb-shape d-none d-sm-block">
+                                    <img src="assets/img/home-3/hero/shape/ballon.png" alt="">
+                                </div>
+                                <div class="it-hero-thumb p-relative">
+                                    <?php
+                                    $alt_text_1 = str_replace(['-', '_'], ' ', pathinfo($od_thumbnail_image['url'], PATHINFO_FILENAME));
+                                    ?>
+                                    <img src="<?php echo $od_thumbnail_image['url'] ?>" alt="<?php echo esc_attr($alt_text_1); ?>">
+                                    <div class="it-hero-sub-thumb">
+                                        <?php
+                                        $alt_text_1 = str_replace(['-', '_'], ' ', pathinfo($od_thumbnail_image_2['url'], PATHINFO_FILENAME));
+                                        ?>
+                                        <img src="<?php echo $od_thumbnail_image_2['url'] ?>" alt="<?php echo esc_attr($alt_text_1); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
 
@@ -162,7 +233,7 @@ class Hero_Banner extends Widget_Base
                             <div class="it-hero-content-wrap p-relative">
                                 <div class="it-hero-title-box mb-30">
                                     <span class="it-section-subtitle wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".3s"><?php echo od_kses($od_subtitle, 'ordainit-toolkit') ?></span>
-                                    <h3 class="it-slider-title text-black mb-20 wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".5s"><?php echo od_kses($od_title, 'ordainit-toolkit') ?></h3>
+                                    <h3 class="it-slider-title mb-20 wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".5s"><?php echo od_kses($od_title, 'ordainit-toolkit') ?></h3>
                                     <p class="wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".7s"><?php echo od_kses($od_description, 'ordainit-toolkit') ?></p>
                                 </div>
                                 <div class="it-hero-button-area d-flex align-items-center wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".9s">
@@ -185,27 +256,25 @@ class Hero_Banner extends Widget_Base
                                     <span class="it-about-thumb-shape"></span>
                                     <div class="it-about-thumb-rocket d-none d-sm-block">
                                         <?php
-                                        $alt_text_2 = str_replace(['-', '_'], ' ', pathinfo($od_shape1_image['url'], PATHINFO_FILENAME));
+                                        $alt_text_2 = str_replace(['-', '_'], ' ', pathinfo($od_shape_image_1['url'], PATHINFO_FILENAME));
                                         ?>
-                                        <img src="<?php echo $od_shape1_image['url'] ?>" alt="<?php echo esc_attr($alt_text_2); ?>">
+                                        <img src="<?php echo $od_shape_image_1['url'] ?>" alt="<?php echo esc_attr($alt_text_2); ?>">
                                     </div>
                                     <div class="it-about-thumb-cloud-1 d-none d-sm-block">
                                         <span>
                                             <?php
-                                            $alt_text_3 = str_replace(['-', '_'], ' ', pathinfo($od_shape2_image['url'], PATHINFO_FILENAME));
+                                            $alt_text_3 = str_replace(['-', '_'], ' ', pathinfo($od_shape_image_2['url'], PATHINFO_FILENAME));
                                             ?>
-                                            <img src="<?php echo $od_shape2_image['url'] ?>" alt="<?php echo esc_attr($alt_text_3); ?>">
+                                            <img src="<?php echo $od_shape_image_2['url'] ?>" alt="<?php echo esc_attr($alt_text_3); ?>">
 
                                         </span>
                                     </div>
                                     <div class="it-about-thumb-cloud-2 d-none d-sm-block">
                                         <span>
-                                            <svg width="76" height="35" viewBox="0 0 76 35" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path opacity="0.5"
-                                                    d="M55.577 15.6124L55.625 16.2048L56.2004 16.0561C57.4421 15.7352 58.741 15.5659 60.0801 15.5659C68.5986 15.5659 75.5044 22.4383 75.5 30.9198V30.92C75.5 32.1525 75.351 33.35 75.0752 34.5H33.2708H12.7972H3.01171L12.1893 31.3663L12.5507 31.2429L12.5267 30.8618C12.5044 30.5066 12.4872 30.1652 12.4872 29.8183C12.4872 23.0399 16.6036 17.2192 22.4926 14.7016L22.7457 14.5934L22.7896 14.3216C24.0558 6.4866 30.8772 0.5 39.1069 0.5C47.7824 0.5 54.8915 7.15622 55.577 15.6124Z"
-                                                    stroke="currentColor" />
-                                            </svg>
+                                            <?php
+                                            $alt_text_3 = str_replace(['-', '_'], ' ', pathinfo($od_shape_image_3['url'], PATHINFO_FILENAME));
+                                            ?>
+                                            <img src="<?php echo $od_shape_image_3['url'] ?>" alt="<?php echo esc_attr($alt_text_3); ?>">
                                         </span>
                                     </div>
                                 </div>
