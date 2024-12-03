@@ -71,10 +71,28 @@ class OD_Core_Plugin
 	 * @since 1.2.0
 	 * @access public
 	 */
-	public function widget_scripts()
+	public function widget_scripts_and_styles()
 	{
-		wp_register_script('ordainit-toolkit', plugins_url('/assets/js/hello-world.js', __FILE__), ['jquery'], false, true);
+		// Register and enqueue the script
+		wp_register_script(
+			'ordainit-toolkit-script',
+			plugins_url('/assets/js/hello-world.js', __FILE__),
+			['jquery'],
+			false,
+			true
+		);
+		wp_enqueue_script('ordainit-toolkit-script');
+
+		// Register and enqueue the style
+		wp_register_style(
+			'ordainit-toolkit-style',
+			plugins_url('/assets/css/style.css', __FILE__),
+			[],
+			false
+		);
+		wp_enqueue_style('ordainit-toolkit-style');
 	}
+
 
 	/**
 	 * Editor scripts
@@ -356,7 +374,7 @@ class OD_Core_Plugin
 	{
 
 		// Register widget scripts
-		add_action('elementor/frontend/after_register_scripts', [$this, 'widget_scripts']);
+		add_action('elementor/frontend/after_register_scripts', [$this, 'widget_scripts_and_styles']);
 
 		// Register widgets
 		add_action('elementor/widgets/register', [$this, 'register_widgets']);
