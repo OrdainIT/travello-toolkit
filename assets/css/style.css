@@ -9,3 +9,9 @@
   width: 270px;
   height: 450px;
 }
+
+.elementor-widget-container .it-hero-thumb > img {
+  border: 5px solid #fff;
+  border-radius: 1000px;
+  height: 600px;
+}
