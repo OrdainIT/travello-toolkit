@@ -15,3 +15,10 @@
   border-radius: 1000px;
   height: 600px;
 }
+
+/* tour CSs */
+
+h3.it-discover-passenger-categories span {
+  display: block;
+  margin-top: 10px;
+}

@@ -82,6 +82,15 @@ class OD_Core_Plugin
 			true
 		);
 		wp_enqueue_script('ordainit-toolkit-script');
+		// Register and enqueue the script
+		wp_register_script(
+			'ordainit-toolkit-plugin',
+			plugins_url('/assets/js/plugin.js', __FILE__),
+			['jquery'],
+			false,
+			true
+		);
+		wp_enqueue_script('ordainit-toolkit-plugin');
 
 		// Register and enqueue the style
 		wp_register_style(
