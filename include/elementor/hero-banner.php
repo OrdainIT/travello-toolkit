@@ -131,6 +131,12 @@ class Hero_Banner extends Widget_Base
         $od_shape_image_1 = $settings['od_shape_image_1'];
         $od_shape_image_2 = $settings['od_shape_image_2'];
         $od_shape_image_3 = $settings['od_shape_image_3'];
+        $od_section_background_image = $settings['od_section_background_image'];
+        $od_customer_box_switcher = $settings['od_customer_box_switcher'];
+        $od_custom_box_thumbnail_image = $settings['od_custom_box_thumbnail_image'];
+        $od_custom_box_text = $settings['od_custom_box_text'];
+        $od_form_section_switcher = $settings['od_form_section_switcher'];
+        $od_form_input_placeholder = $settings['od_form_input_placeholder'];
 
 
 
@@ -151,13 +157,16 @@ class Hero_Banner extends Widget_Base
             }
         ?>
 
-            <div class="it-hero-area fix it-hero-overlay it-hero-height it-hero-bg p-relative" data-background="assets/img/home-3/hero/hero-bg.jpg" style="background-image: url(&quot;assets/img/home-3/hero/hero-bg.jpg&quot;);">
+            <div class="it-hero-area fix it-hero-overlay it-hero-height it-hero-bg p-relative" style="background-image: url('<?php echo $od_section_background_image['url'] ?>');">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-7 col-lg-7">
                             <div class="it-hero-content-wrap p-relative">
                                 <div class="it-hero-content-shape d-none d-md-block">
-                                    <img src="assets/img/home-3/hero/shape/star.png" alt="">
+                                    <?php
+                                    $alt_text_4 = str_replace(['-', '_'], ' ', pathinfo($od_shape_image_1['url'], PATHINFO_FILENAME));
+                                    ?>
+                                    <img src="<?php echo $od_shape_image_1['url'] ?>" alt="<?php echo esc_attr($alt_text_4); ?>">
                                 </div>
                                 <div class="it-hero-title-box mb-30">
                                     <span class="it-section-subtitle wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".3s"><?php echo od_kses($od_subtitle, 'ordainit-toolkit') ?></span>
@@ -171,14 +180,19 @@ class Hero_Banner extends Widget_Base
                                         </a>
                                     </div>
                                     <div class="it-hero-customer-box-wrap d-none d-sm-block">
-                                        <div class="it-hero-customer-box d-flex align-items-center">
-                                            <div class="it-hero-customer-thumb mr-15">
-                                                <img src="assets/img/home-3/hero/shape/customer.png" alt="">
+                                        <?php if (!empty($od_customer_box_switcher)) : ?>
+                                            <div class="it-hero-customer-box d-flex align-items-center">
+                                                <div class="it-hero-customer-thumb mr-15">
+                                                    <?php
+                                                    $alt_text_4 = str_replace(['-', '_'], ' ', pathinfo($od_custom_box_thumbnail_image['url'], PATHINFO_FILENAME));
+                                                    ?>
+                                                    <img src="<?php echo $od_custom_box_thumbnail_image['url'] ?>" alt="<?php echo esc_attr($alt_text_4); ?>">
+                                                </div>
+                                                <div class="it-hero-customer-text">
+                                                    <span><?php echo od_kses($od_custom_box_text, 'ordainit-toolkit') ?></span>
+                                                </div>
                                             </div>
-                                            <div class="it-hero-customer-text">
-                                                <span>MORE THAN&nbsp;10K+<br>TRUSTED CUSTOMERS</span>
-                                            </div>
-                                        </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +200,10 @@ class Hero_Banner extends Widget_Base
                         <div class="col-xl-5 col-lg-5">
                             <div class="it-hero-thumb-box p-relative">
                                 <div class="it-hero-thumb-shape d-none d-sm-block">
-                                    <img src="assets/img/home-3/hero/shape/ballon.png" alt="">
+                                    <?php
+                                    $alt_text_3 = str_replace(['-', '_'], ' ', pathinfo($od_shape_image_2['url'], PATHINFO_FILENAME));
+                                    ?>
+                                    <img src="<?php echo $od_shape_image_2['url'] ?>" alt="<?php echo esc_attr($alt_text_3); ?>">
                                 </div>
                                 <div class="it-hero-thumb p-relative">
                                     <?php
@@ -195,9 +212,9 @@ class Hero_Banner extends Widget_Base
                                     <img src="<?php echo $od_thumbnail_image['url'] ?>" alt="<?php echo esc_attr($alt_text_1); ?>">
                                     <div class="it-hero-sub-thumb">
                                         <?php
-                                        $alt_text_1 = str_replace(['-', '_'], ' ', pathinfo($od_thumbnail_image_2['url'], PATHINFO_FILENAME));
+                                        $alt_text_2 = str_replace(['-', '_'], ' ', pathinfo($od_thumbnail_image_2['url'], PATHINFO_FILENAME));
                                         ?>
-                                        <img src="<?php echo $od_thumbnail_image_2['url'] ?>" alt="<?php echo esc_attr($alt_text_1); ?>">
+                                        <img src="<?php echo $od_thumbnail_image_2['url'] ?>" alt="<?php echo esc_attr($alt_text_2); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +224,34 @@ class Hero_Banner extends Widget_Base
             </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
-
+            <div class="it-slider-2-area it-slider-2-ovarlay it-slider-2-height p-relative">
+                <div class="it-slider-2-bg" style="background-image: url('<?php echo $od_section_background_image['url'] ?>');"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9">
+                            <div class="it-slider-2-content-wrap z-index-5">
+                                <div class="it-slider-2-text">
+                                    <h3 class="it-slider-title mb-20 wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".3s"><?php echo od_kses($od_title, 'ordainit-toolkit') ?></h3>
+                                    <p class="wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".5s"><?php echo od_kses($od_description, 'ordainit-toolkit') ?></p>
+                                </div>
+                                <?php if (!empty($od_form_section_switcher)) : ?>
+                                    <div class="it-slider-2-form p-relative wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".7s">
+                                        <form action="#">
+                                            <div class="it-slider-2-input">
+                                                <input type="text" placeholder="<?php echo esc_html($od_form_input_placeholder, 'ordainit-toolkit') ?>">
+                                            </div>
+                                            <button class="it-btn-primary" type="submit">Search</button>
+                                        </form>
+                                        <div class="it-slider-2-input-icon">
+                                            <i class="flaticon-origami"></i>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <?php else:
 
