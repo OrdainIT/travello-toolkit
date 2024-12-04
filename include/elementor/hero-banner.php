@@ -13,7 +13,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class Hero_Banner extends Widget_Base
+class OD_Hero_Banner extends Widget_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class Hero_Banner extends Widget_Base
      */
     public function get_name()
     {
-        return 'hero-banner';
+        return 'od-hero-banner';
     }
 
     /**
@@ -343,4 +343,4 @@ class Hero_Banner extends Widget_Base
     }
 }
 
-$widgets_manager->register(new Hero_Banner());
+$widgets_manager->register(new OD_Hero_Banner());

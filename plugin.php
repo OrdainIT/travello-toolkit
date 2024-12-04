@@ -190,7 +190,9 @@ class OD_Core_Plugin
 		return [
 			'test',
 			'hero-banner',
-			'button'
+			'button',
+			'sub-heading',
+			'heading'
 		];
 	}
 
