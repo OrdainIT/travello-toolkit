@@ -41,7 +41,7 @@ class OD_Button extends Widget_Base
      */
     public function get_title()
     {
-        return __('OD Button', 'ordainit-toolkit');
+        return __('Button', 'ordainit-toolkit');
     }
 
     /**

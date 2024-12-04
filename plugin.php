@@ -192,7 +192,8 @@ class OD_Core_Plugin
 			'hero-banner',
 			'button',
 			'sub-heading',
-			'heading'
+			'heading',
+			'icon-box',
 		];
 	}
 

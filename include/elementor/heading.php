@@ -41,7 +41,7 @@ class OD_Heading extends Widget_Base
      */
     public function get_title()
     {
-        return __('OD Heading', 'ordainit-toolkit');
+        return __('Heading', 'ordainit-toolkit');
     }
 
     /**
