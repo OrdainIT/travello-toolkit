@@ -126,7 +126,6 @@ class Hello_Test extends Widget_Base
 
 
 		<script>
-			"use strict";
 			jQuery(document).ready(function($) {
 
 

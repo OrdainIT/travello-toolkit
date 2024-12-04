@@ -333,7 +333,6 @@ class Hero_Banner extends Widget_Base
 
 
         <script>
-            "use strict";
             jQuery(document).ready(function($) {
 
 
