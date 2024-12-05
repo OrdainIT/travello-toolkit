@@ -56,7 +56,7 @@ if ($lowest_sale_price > 0) {
     <?php if ($lowest_sale_price > 0) : ?>
         <!-- Display regular price with strike-through and sale price -->
         <span class="regular-price" style="text-decoration: line-through;">$<?php echo number_format($lowest_regular_price, 2); ?></span>
-        <span class="sale-price" style="color: red;">$<?php echo number_format($lowest_sale_price, 2); ?></span>
+        <span class="sale-price">$<?php echo number_format($lowest_sale_price, 2); ?></span>
     <?php else : ?>
         <!-- Display only regular price -->
         <span>$<?php echo number_format($display_price, 2); ?></span>

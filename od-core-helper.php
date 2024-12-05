@@ -43,6 +43,7 @@ include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/acf-meta/portfolio-meta.php
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/acf-meta/services-meta.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/od-woocommerce-functions.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/tour/od-tour.php');
+include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/tour/tour-functions.php');
 
 
 /**
