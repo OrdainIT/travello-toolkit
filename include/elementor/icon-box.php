@@ -154,11 +154,11 @@ class OD_Icon_Box extends Widget_Base
                 <h3 class="it-chooseus-rating-title">
                     <b class="purecounter"
                         data-purecounter-duration="1"
-                        data-purecounter-end="<?php echo esc_attr($od_icon_box_counter_end); ?>">
-                        <?php echo esc_html($od_icon_box_counter_end); ?>
+                        data-purecounter-end="<?php echo esc_attr($od_icon_box_counter_end, 'ordainit-toolkit'); ?>">
+                        <?php echo esc_html($od_icon_box_counter_end, 'ordainit-toolkit'); ?>
                     </b>+
                 </h3>
-                <p><?php echo esc_html($od_icon_box_counter_text); ?></p>
+                <p><?php echo esc_html($od_icon_box_counter_text, 'ordainit-toolkit'); ?></p>
             </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-2'): ?>

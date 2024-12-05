@@ -212,6 +212,7 @@ class OD_Core_Plugin
 			'sub-heading',
 			'heading',
 			'icon-box',
+			'counter-box',
 		];
 	}
 
