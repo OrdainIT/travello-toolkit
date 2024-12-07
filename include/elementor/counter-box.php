@@ -122,23 +122,63 @@ class OD_Counter_Box extends Widget_Base
         $od_counter_box_end_value = $settings['od_counter_box_end_value'];
         $od_counter_box_subtext = $settings['od_counter_box_subtext'];
         $od_counter_box_title = $settings['od_counter_box_title'];
-        $od_counter_box_svg_switcher = $settings['od_counter_box_svg_switcher'];
+        $od_counter_box_icon_switcher = $settings['od_counter_box_icon_switcher'];
+        $od_counter_box_icon_class = $settings['od_counter_box_icon_class'];
 ?>
 
-        <?php if ($settings['od_design_style']  == 'layout-3'): ?>
-
-        <?php elseif ($settings['od_design_style']  == 'layout-2'): ?>
-            <div class="it-funfact-item d-flex align-items-center justify-content-center">
-                <div class="it-funfact-content d-flex">
-                    <div class="it-funfact-icon">
-                        <i class="flaticon-journey"></i>
-                    </div>
+        <?php if ($settings['od_design_style']  == 'layout-4'): ?>
+            <div class="it-funfact-5">
+                <div class="it-funfact-item">
                     <div class="it-funfact-text">
                         <h3 class="it-funfact-number">
-                            <b class="purecounter" data-purecounter-duration="0" data-purecounter-end="835">835</b>
-                            +
+                            <b class="purecounter" data-purecounter-duration="0" data-purecounter-end="56">56</b>
                         </h3>
-                        <p>Happy Traveler</p>
+                        <p>COUNTRIES VISITED</p>
+                    </div>
+                </div>
+            </div>
+
+        <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
+
+            <div class="it-funfact-4">
+                <div class="it-funfact-item d-flex align-items-center">
+                    <div class="it-funfact-text">
+                        <h3 class="it-funfact-number">
+                            <b
+                                class="purecounter"
+                                data-purecounter-duration="0"
+                                data-purecounter-end="<?php echo esc_attr($od_counter_box_end_value, 'ordainit-toolkit'); ?>">
+                                <?php echo esc_html($od_counter_box_end_value, 'ordainit-toolkit'); ?>
+                            </b>
+                            <?php echo esc_html($od_counter_box_subtext, 'ordainit-toolkit') ?>
+                        </h3>
+                        <p><?php echo esc_html($od_counter_box_title, 'ordainit-toolkit') ?></p>
+                    </div>
+                </div>
+            </div>
+
+
+        <?php elseif ($settings['od_design_style']  == 'layout-2'): ?>
+            <div class="it-funfact-2">
+                <div class="it-funfact-item d-flex align-items-center justify-content-center">
+                    <div class="it-funfact-content d-flex">
+                        <?php if (!empty($od_counter_box_icon_switcher)) : ?>
+                            <div class="it-funfact-icon">
+                                <i class="<?php echo esc_attr($od_counter_box_icon_class, 'ordainit-toolkit') ?>"></i>
+                            </div>
+                        <?php endif; ?>
+                        <div class="it-funfact-text">
+                            <h3 class="it-funfact-number">
+                                <b
+                                    class="purecounter"
+                                    data-purecounter-duration="0"
+                                    data-purecounter-end="<?php echo esc_attr($od_counter_box_end_value, 'ordainit-toolkit'); ?>">
+                                    <?php echo esc_html($od_counter_box_end_value, 'ordainit-toolkit'); ?>
+                                </b>
+                                <?php echo esc_html($od_counter_box_subtext, 'ordainit-toolkit') ?>
+                            </h3>
+                            <p><?php echo esc_html($od_counter_box_title, 'ordainit-toolkit') ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +201,7 @@ class OD_Counter_Box extends Widget_Base
 
 
                 <div class="it-funfact-icon">
-                    <?php if (!empty($od_counter_box_svg_switcher)) : ?>
+                    <?php if (!empty($od_counter_box_icon_switcher)) : ?>
                         <span>
                             <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M-9.93439e-08 22.364L0 24.6367L47 24.6367L47 22.364L-9.93439e-08 22.364Z" fill="currentColor"></path>
@@ -196,6 +236,14 @@ class OD_Counter_Box extends Widget_Base
         <script>
             jQuery(document).ready(function($) {
 
+                if ($(".purecounter").length) {
+                    new PureCounter({
+                        filesizing: true,
+                        selector: ".filesizecount",
+                        pulse: 2,
+                    });
+                    new PureCounter();
+                }
 
 
             });

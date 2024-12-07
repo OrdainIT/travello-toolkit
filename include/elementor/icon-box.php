@@ -129,56 +129,67 @@ class OD_Icon_Box extends Widget_Base
 
         <?php if ($settings['od_design_style']  == 'layout-4'): ?>
 
-            <div class="it-about-service-icon mr-20">
-                <span>
-                    <?php
-                    $alt_text = str_replace(['-', '_'], ' ', pathinfo($od_icon_box_icon_image['url'], PATHINFO_FILENAME));
-                    ?>
-                    <img src="<?php echo $od_icon_box_icon_image['url'] ?>" alt="<?php echo esc_attr($alt_text); ?>">
-                </span>
+            <div class="it-about-service-item">
+                <div class="it-about-service-icon mr-20">
+                    <span>
+                        <?php
+                        $alt_text = str_replace(['-', '_'], ' ', pathinfo($od_icon_box_icon_image['url'], PATHINFO_FILENAME));
+                        ?>
+                        <img src="<?php echo $od_icon_box_icon_image['url'] ?>" alt="<?php echo esc_attr($alt_text); ?>">
+                    </span>
+                </div>
+
+                <div class="it-about-service-text">
+                    <h3 class="it-about-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
+                    <p><?php echo od_kses($od_icon_box_description, 'ordainit-toolkit'); ?>
+                    </p>
+                </div>
             </div>
 
-            <div class="it-about-service-text">
-                <h3 class="it-about-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
-                <p><?php echo od_kses($od_icon_box_description, 'ordainit-toolkit'); ?>
-                </p>
-            </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
 
-            <div class="it-chooseus-rating-icon">
-                <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
+            <div class="it-chooseus-rating-content d-flex align-items-center">
+                <div class="it-chooseus-rating-icon">
+                    <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
+                </div>
+
+                <div class="it-chooseus-rating-text">
+                    <h3 class="it-chooseus-rating-title">
+                        <b class="purecounter"
+                            data-purecounter-duration="1"
+                            data-purecounter-end="<?php echo esc_attr($od_icon_box_counter_end, 'ordainit-toolkit'); ?>">
+                            <?php echo esc_html($od_icon_box_counter_end, 'ordainit-toolkit'); ?>
+                        </b>+
+                    </h3>
+                    <p><?php echo esc_html($od_icon_box_counter_text, 'ordainit-toolkit'); ?></p>
+                </div>
             </div>
 
-            <div class="it-chooseus-rating-text">
-                <h3 class="it-chooseus-rating-title">
-                    <b class="purecounter"
-                        data-purecounter-duration="1"
-                        data-purecounter-end="<?php echo esc_attr($od_icon_box_counter_end, 'ordainit-toolkit'); ?>">
-                        <?php echo esc_html($od_icon_box_counter_end, 'ordainit-toolkit'); ?>
-                    </b>+
-                </h3>
-                <p><?php echo esc_html($od_icon_box_counter_text, 'ordainit-toolkit'); ?></p>
-            </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-2'): ?>
 
             <!-- Layout - 2 -->
-            <div class="it-chooseus-service-icon">
-                <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
+            <div class="it-chooseus-service-content d-flex align-items-center">
+                <div class="it-chooseus-service-icon">
+                    <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
+                </div>
+                <h3 class="it-chooseus-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
             </div>
-            <h3 class="it-chooseus-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
 
         <?php else: ?>
             <!-- Layout - 1 -->
-            <div class="it-about-service-icon mr-20">
-                <span>
-                    <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
-                </span>
-            </div>
-            <div class="it-about-service-text">
-                <h3 class="it-about-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
-                <p><?php echo od_kses($od_icon_box_description, 'ordainit-toolkit'); ?></p>
+
+            <div class="it-about-service-item d-flex align-items-center">
+                <div class="it-about-service-icon mr-20">
+                    <span>
+                        <i class="<?php echo esc_attr($od_icon_box_icon_class); ?>"></i>
+                    </span>
+                </div>
+                <div class="it-about-service-text">
+                    <h3 class="it-about-service-title"><?php echo od_kses($od_icon_box_title, 'ordainit-toolkit'); ?></h3>
+                    <p><?php echo od_kses($od_icon_box_description, 'ordainit-toolkit'); ?></p>
+                </div>
             </div>
 
         <?php endif; ?>
@@ -187,6 +198,14 @@ class OD_Icon_Box extends Widget_Base
 
         <script>
             jQuery(document).ready(function($) {
+                if ($(".purecounter").length) {
+                    new PureCounter({
+                        filesizing: true,
+                        selector: ".filesizecount",
+                        pulse: 2,
+                    });
+                    new PureCounter();
+                }
 
             });
         </script>
