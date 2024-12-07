@@ -129,7 +129,9 @@ class OD_Icon_Box extends Widget_Base
 
         <?php if ($settings['od_design_style']  == 'layout-4'): ?>
 
-            <div class="it-about-service-item">
+
+
+            <div class="it-about-service-item d-flex align-items-center">
                 <div class="it-about-service-icon mr-20">
                     <span>
                         <?php

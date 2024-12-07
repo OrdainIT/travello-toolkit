@@ -205,6 +205,7 @@ class OD_Core_Plugin
 			'heading',
 			'icon-box',
 			'counter-box',
+			'about-image-box',
 		];
 	}
 

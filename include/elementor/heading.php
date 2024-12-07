@@ -120,10 +120,41 @@ class OD_Heading extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $od_heading_title = $settings['od_heading_title'];
+        $od_heading_title_alignment = $settings['od_heading_title_alignment'];
+
+        $this->add_render_attribute('heading_title_args', 'class', 'it-section-title');
+        $this->add_render_attribute('heading_title_args', 'style', 'text-align: ' . $od_heading_title_alignment . ';');
+
+
+        $link_attributes = "";
+        $link_settings = $settings['od_heading_link'];
+
+        if (!empty($link_settings['url'])) {
+            $this->add_render_attribute('heading_link_args', 'href', esc_url($link_settings['url']));
+            if (!empty($link_settings['is_external'])) {
+                $this->add_render_attribute('heading_link_args', 'target', '_blank');
+            }
+            if (!empty($link_settings['nofollow'])) {
+                $this->add_render_attribute('heading_link_args', 'rel', 'nofollow');
+            }
+            $link_attributes = $this->get_render_attribute_string('heading_link_args');
+        }
+
+
 ?>
 
+        <?php
 
-        <h3 class="it-section-title"><?php echo od_kses($od_heading_title, 'ordainit-toolkit') ?></h3>
+        printf(
+            '<%1$s %2$s>%3$s%4$s%5$s</%1$s>',
+            esc_attr($settings['od_heading_title_tag']), // Escaped heading tag
+            $this->get_render_attribute_string('heading_title_args'), // Heading attributes
+            $link_attributes ? '<a ' . $link_attributes . '>' : '', // Open link if set
+            od_kses($od_heading_title, 'ordainit-toolkit'), // Heading text
+            $link_attributes ? '</a>' : '' // Close link if set
+        );
+
+        ?>
 
 
         <script>

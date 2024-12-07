@@ -1,61 +1,74 @@
 <?php
-
-function add_tour_data_to_cart($cart_item_data, $product_id)
+// Capture custom tour data and store it in the session
+function od_capture_tour_data_in_checkout()
 {
-    // Check if the data exists in the URL
-    if (isset($_GET['tour_name']) && isset($_GET['tour_adults_price']) && isset($_GET['tour_kids_price']) && isset($_GET['tour_children_price'])) {
-        $cart_item_data['tour_name'] = sanitize_text_field($_GET['tour_name']);
-        $cart_item_data['tour_adults_price'] = floatval($_GET['tour_adults_price']);
-        $cart_item_data['tour_kids_price'] = floatval($_GET['tour_kids_price']);
-        $cart_item_data['tour_children_price'] = floatval($_GET['tour_children_price']);
-    }
-    return $cart_item_data;
-}
-add_filter('woocommerce_add_cart_item_data', 'add_tour_data_to_cart', 10, 2);
-
-function display_tour_data_in_cart($item_data, $cart_item)
-{
-    if (isset($cart_item['tour_name'])) {
-        $item_data[] = array(
-            'name' => 'Tour Name',
-            'value' => $cart_item['tour_name'],
-        );
-    }
-    if (isset($cart_item['tour_adults_price'])) {
-        $item_data[] = array(
-            'name' => 'Adults Price',
-            'value' => wc_price($cart_item['tour_adults_price']),
-        );
-    }
-    if (isset($cart_item['tour_kids_price'])) {
-        $item_data[] = array(
-            'name' => 'Kids Price',
-            'value' => wc_price($cart_item['tour_kids_price']),
-        );
-    }
-    if (isset($cart_item['tour_children_price'])) {
-        $item_data[] = array(
-            'name' => 'Children Price',
-            'value' => wc_price($cart_item['tour_children_price']),
-        );
-    }
-    return $item_data;
-}
-add_filter('woocommerce_get_item_data', 'display_tour_data_in_cart', 10, 2);
-
-function add_tour_data_to_order($item, $cart_item_key, $values, $order)
-{
-    if (isset($values['tour_name'])) {
-        $item->add_meta_data('Tour Name', $values['tour_name']);
-    }
-    if (isset($values['tour_adults_price'])) {
-        $item->add_meta_data('Adults Price', $values['tour_adults_price']);
-    }
-    if (isset($values['tour_kids_price'])) {
-        $item->add_meta_data('Kids Price', $values['tour_kids_price']);
-    }
-    if (isset($values['tour_children_price'])) {
-        $item->add_meta_data('Children Price', $values['tour_children_price']);
+    if (isset($_POST['tour_name']) && isset($_POST['total_price'])) {
+        WC()->session->set('tour_name', sanitize_text_field($_POST['tour_name']));
+        WC()->session->set('total_price', sanitize_text_field($_POST['total_price']));
     }
 }
-add_action('woocommerce_checkout_create_order_line_item', 'add_tour_data_to_order', 10, 4);
+add_action('template_redirect', 'od_capture_tour_data_in_checkout');
+
+// Add custom tour data to WooCommerce order
+function od_add_tour_data_to_order($order_id)
+{
+    if ($tour_name = WC()->session->get('tour_name')) {
+        update_post_meta($order_id, 'Tour Name', $tour_name);
+    }
+    if ($total_price = WC()->session->get('total_price')) {
+        update_post_meta($order_id, 'Total Price', $total_price);
+    }
+}
+add_action('woocommerce_checkout_update_order_meta', 'od_add_tour_data_to_order');
+
+// Display custom tour data in the order email
+function od_display_tour_data_in_emails($order, $sent_to_admin, $plain_text, $email)
+{
+    $tour_name = get_post_meta($order->get_id(), 'Tour Name', true);
+    $total_price = get_post_meta($order->get_id(), 'Total Price', true);
+
+    if ($tour_name && $total_price) {
+        echo '<p><strong>Tour Name:</strong> ' . esc_html($tour_name) . '</p>';
+        echo '<p><strong>Total Price:</strong> ' . wc_price($total_price) . '</p>';
+    }
+}
+add_action('woocommerce_email_order_meta', 'od_display_tour_data_in_emails', 10, 4);
+
+// Display custom tour data in the WooCommerce admin order page
+function od_display_tour_data_in_admin_order($order)
+{
+    $tour_name = get_post_meta($order->get_id(), 'Tour Name', true);
+    $total_price = get_post_meta($order->get_id(), 'Total Price', true);
+
+    if ($tour_name && $total_price) {
+        echo '<p><strong>Tour Name:</strong> ' . esc_html($tour_name) . '</p>';
+        echo '<p><strong>Total Price:</strong> ' . wc_price($total_price) . '</p>';
+    }
+}
+add_action('woocommerce_admin_order_data_after_order_details', 'od_display_tour_data_in_admin_order');
+
+add_action('woocommerce_before_checkout_form', function () {
+    $tour_name = WC()->session->get('tour_name');
+    $total_price = WC()->session->get('total_price');
+
+    if ($tour_name && $total_price) {
+        echo '<div class="tour-details">';
+        echo '<h3>Booking Details</h3>';
+        echo '<p><strong>Tour Name:</strong> ' . esc_html($tour_name) . '</p>';
+        echo '<p><strong>Total Price:</strong> ' . wc_price($total_price) . '</p>';
+        echo '</div>';
+    }
+});
+
+
+
+// Redirect to the checkout page after adding an item to the cart
+function od_redirect_to_checkout()
+{
+    if (isset($_REQUEST['add-to-cart']) && isset($_POST['total_price'])) {
+        // Skip cart and redirect to checkout
+        wp_safe_redirect(wc_get_checkout_url());
+        exit;
+    }
+}
+add_action('template_redirect', 'od_redirect_to_checkout');

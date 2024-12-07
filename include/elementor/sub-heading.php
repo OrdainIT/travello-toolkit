@@ -120,9 +120,10 @@ class OD_Sub_Heading extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $od_sub_heading_title = $settings['od_sub_heading_title'];
+        $od_sub_heading_title_alignment = $settings['od_sub_heading_title_alignment'];
 ?>
 
-        <span class="it-section-subtitle"><?php echo od_kses($od_sub_heading_title, 'ordainit-toolkit') ?></span>
+        <span class="d-block it-section-subtitle" style="text-align: <?php echo esc_attr($od_sub_heading_title_alignment, 'ordainit-toolkit'); ?>"><?php echo od_kses($od_sub_heading_title, 'ordainit-toolkit') ?></span>
 
         <script>
             jQuery(document).ready(function($) {

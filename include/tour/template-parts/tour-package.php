@@ -1,7 +1,34 @@
+   <?php
+    // Get the tour prices meta data
+    $tour_prices = get_post_meta(get_the_ID(), '_tour_prices', true);
+
+    $tour_id = get_the_ID();
+
+
+
+    // Parse prices with defaults to prevent undefined errors
+    $tour_prices = wp_parse_args($tour_prices, [
+        'adults_regular' => 0,
+        'adults_sale' => 0,
+        'kids_regular' => 0,
+        'kids_sale' => 0,
+        'children_regular' => 0,
+        'children_sale' => 0,
+    ]);
+
+    // Determine the price to display for each category
+    $adults_price = !empty($tour_prices['adults_sale']) ? $tour_prices['adults_sale'] : $tour_prices['adults_regular'];
+    $kids_price = !empty($tour_prices['kids_sale']) ? $tour_prices['kids_sale'] : $tour_prices['kids_regular'];
+    $children_price = !empty($tour_prices['children_sale']) ? $tour_prices['children_sale'] : $tour_prices['children_regular'];
+    // Calculate the total price
+    $total_price = $adults_price + $kids_price + $children_price;
+    ?>
+
    <div class="it-discover-right">
        <div class="it-discover-package mb-60">
            <div class="it-discover-package-item">
                <h3 class="it-discover-package-title">Package Details</h3>
+               <?php echo $tour_id; ?>
                <div class="it-discover-package-content">
                    <div class="it-discover-package-list d-flex align-items-center">
                        <span>Date</span>
@@ -194,9 +221,15 @@
 
                    <div class="it-discover-package-total">
                        <h3 class="it-discover-package-total-text mb-30">
-                           Total Cost: <span id="total-cost">$0.00</span> / Person
+                           Total Cost: <span id="total-cost"><?php echo $total_price; ?></span> / Person
                        </h3>
+
+
                        <div class="it-discover-package-proceed">
+
+
+
+
                            <button type="submit" id="proceed-to-book" class="it-btn-primary">Proceed to Book</button>
                        </div>
                    </div>

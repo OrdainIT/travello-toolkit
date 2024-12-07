@@ -20,6 +20,34 @@ $this->add_control(
 );
 
 
+
+
+$this->add_control(
+    'od_sub_heading_title_alignment',
+    [
+        'label' => __('Alignment', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'left' => [
+                'title' => __('Left', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-left',
+            ],
+            'center' => [
+                'title' => __('Center', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-center',
+            ],
+            'right' => [
+                'title' => __('Right', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-right',
+            ],
+        ],
+        'default' => 'left',
+        'toggle' => true,
+    ]
+);
+
+
+
 $this->end_controls_section();
 
 $this->start_controls_section(

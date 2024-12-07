@@ -20,6 +20,83 @@ $this->add_control(
 );
 
 
+$this->add_control(
+    'od_heading_title_alignment',
+    [
+        'label' => __('Alignment', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'left' => [
+                'title' => __('Left', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-left',
+            ],
+            'center' => [
+                'title' => __('Center', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-center',
+            ],
+            'right' => [
+                'title' => __('Right', 'ordainit-toolkit'),
+                'icon' => 'eicon-text-align-right',
+            ],
+        ],
+        'default' => 'left',
+        'toggle' => true,
+    ]
+);
+
+$this->add_control(
+    'od_heading_title_tag',
+    [
+        'label' => esc_html__('Title HTML Tag', 'tvcore'),
+        'type' => Controls_Manager::CHOOSE,
+        'options' => [
+            'h1' => [
+                'title' => esc_html__('H1', 'tvcore'),
+                'icon' => 'eicon-editor-h1'
+            ],
+            'h2' => [
+                'title' => esc_html__('H2', 'tvcore'),
+                'icon' => 'eicon-editor-h2'
+            ],
+            'h3' => [
+                'title' => esc_html__('H3', 'tvcore'),
+                'icon' => 'eicon-editor-h3'
+            ],
+            'h4' => [
+                'title' => esc_html__('H4', 'tvcore'),
+                'icon' => 'eicon-editor-h4'
+            ],
+            'h5' => [
+                'title' => esc_html__('H5', 'tvcore'),
+                'icon' => 'eicon-editor-h5'
+            ],
+            'h6' => [
+                'title' => esc_html__('H6', 'tvcore'),
+                'icon' => 'eicon-editor-h6'
+            ]
+        ],
+        'default' => 'h3',
+        'toggle' => false,
+    ]
+);
+
+
+$this->add_control(
+    'od_heading_link',
+    [
+        'label' => __('Heading Link', 'plugin-domain'),
+        'type' => \Elementor\Controls_Manager::URL,
+        'placeholder' => __('https://your-link.com', 'ordainit-toolkit'),
+        'default' => [
+            'url' => '',
+            'is_external' => false,
+            'nofollow' => false,
+        ],
+    ]
+);
+
+
+
 $this->end_controls_section();
 
 $this->start_controls_section(

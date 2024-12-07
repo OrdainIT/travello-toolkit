@@ -51,6 +51,9 @@ if ($lowest_sale_price > 0) {
 
 ?>
 
+
+
+
 <p>
     <?php echo esc_html('From', 'ordainit-toolkit'); ?> <br>
     <?php if ($lowest_sale_price > 0) : ?>

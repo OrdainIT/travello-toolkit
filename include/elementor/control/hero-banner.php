@@ -43,8 +43,7 @@ $this->add_control(
         'label' => esc_html__('Choose Image', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
         'default' => [
-            'url' =>
-            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/hero/hero-bg.jpg',
+            'url' => ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/hero/hero-bg.jpg',
         ],
         'condition' => [
             'od_design_style' => ['layout-2', 'layout-3']
@@ -718,7 +717,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape' => 'background-color: {{VALUE}}',
-            '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape::before, .it-about-style-3 .it-about-thumb-shape::after' => 'border-color: {{VALUE}}',
+            '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape::before, {{WRAPPER}}  .it-about-style-3 .it-about-thumb-shape::after' => 'border-color: {{VALUE}}',
             '{{WRAPPER}} .it-about-style-3 .it-about-thumb-shape::after' => 'background-color: {{VALUE}}',
         ],
 
