@@ -18,6 +18,7 @@ $this->add_control(
             'layout-1' => esc_html__('Layout 1', 'ordainit-toolkit'),
             'layout-2' => esc_html__('Layout 2', 'ordainit-toolkit'),
             'layout-3' => esc_html__('Layout 3', 'ordainit-toolkit'),
+            'layout-4' => esc_html__('Layout 4', 'ordainit-toolkit'),
         ],
         'default' => 'layout-1',
     ]
