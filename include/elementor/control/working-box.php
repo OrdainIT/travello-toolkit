@@ -41,6 +41,17 @@ $this->add_control(
     ]
 );
 
+$this->add_control(
+    'od_working_box_qnty_number',
+    [
+        'label' => __('Number', 'ordainit-toolkit'),
+        'type' => Controls_Manager::TEXT,
+        'default' => esc_html__('01', 'ordainit-toolkit'),
+        'label_block' => true,
+    ]
+);
+
+
 
 
 $this->end_controls_section();
@@ -109,6 +120,16 @@ $this->add_control(
         ],
     ]
 );
+$this->add_control(
+    'od_working_box_quantity_style_normal_text_color',
+    [
+        'label' => esc_html__('Quantity Text Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-work-quantity span' => 'color: {{VALUE}}',
+        ],
+    ]
+);
 
 $this->end_controls_tab();
 
@@ -126,6 +147,17 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-work-item:hover .it-work-quantity' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_working_box_quantity_style_hover_text_color',
+    [
+        'label' => esc_html__('Quantity Text Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-work-item:hover .it-work-quantity span' => 'color: {{VALUE}}',
         ],
     ]
 );

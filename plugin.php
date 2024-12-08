@@ -198,6 +198,7 @@ class OD_Core_Plugin
 	public function ordainit_toolkit_widget_list()
 	{
 		return [
+			'blog',
 			'hero-banner',
 			'button',
 			'sub-heading',
@@ -206,6 +207,7 @@ class OD_Core_Plugin
 			'counter-box',
 			'about-image-box',
 			'working-box',
+			'destination-slider',
 		];
 	}
 

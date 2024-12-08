@@ -24,6 +24,7 @@ $this->add_control(
 );
 
 $this->end_controls_section();
+
 $this->start_controls_section(
     'od_about_experienct_box',
     [

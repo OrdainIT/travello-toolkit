@@ -122,10 +122,12 @@ class OD_Working_Box extends Widget_Base
         $od_working_box_title = $settings['od_working_box_title'];
         $od_working_box_description = $settings['od_working_box_description'];
         $od_working_box_title_url = $settings['od_working_box_title_url'];
+        $od_working_box_qnty_number = $settings['od_working_box_qnty_number'];
 ?>
 
         <div class="it-work-item text-center p-relative">
             <div class="it-work-quantity fix p-relative">
+                <span><?php echo esc_html($od_working_box_qnty_number, 'ordainit-toolkit'); ?></span>
             </div>
             <div class="it-work-box">
                 <h3 class="it-work-title">
