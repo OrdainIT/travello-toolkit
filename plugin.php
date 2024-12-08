@@ -206,6 +206,7 @@ class OD_Core_Plugin
 			'counter-box',
 			'about-image-box',
 			'working-box',
+			'testimonial-slider',
 		];
 	}
 
