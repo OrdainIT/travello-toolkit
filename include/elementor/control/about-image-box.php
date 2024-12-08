@@ -18,6 +18,7 @@ $this->add_control(
             'layout-1' => esc_html__('Layout 1', 'ordainit-toolkit'),
             'layout-2' => esc_html__('Layout 2', 'ordainit-toolkit'),
             'layout-3' => esc_html__('Layout 3', 'ordainit-toolkit'),
+            'layout-4' => esc_html__('Layout-4', 'ordainit-toolkit'),
         ],
         'default' => 'layout-1',
     ]
@@ -112,7 +113,7 @@ $this->add_control(
             'url' =>  ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-1/about/img/img-2.jpg',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-2'],
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-4'],
         ],
     ]
 );
@@ -125,7 +126,64 @@ $this->add_control(
             'url' =>  ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-1/about/img/img-3.jpg',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1'],
+            'od_design_style' => ['layout-1', 'layout-4'],
+        ],
+    ]
+);
+
+$this->end_controls_section();
+
+
+$this->start_controls_section(
+    'od_about_experienced_box4',
+    [
+        'label' => __('Experience Box', 'ordainit-toolkit'),
+        'condition' => [
+            'od_design_style' => ['layout-4'],
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_about_experienced_box4_counter_text',
+    [
+        'label' => esc_html__('Text', 'textdomain'),
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'default' => esc_html__('years of experience.', 'textdomain'),
+        'label_block' => true,
+    ]
+);
+$this->add_control(
+    'od_about_experienced_box4_counter_number',
+    [
+        'label' => esc_html__('Counter Number', 'textdomain'),
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'default' => esc_html__('25', 'textdomain'),
+        'label_block' => true,
+    ]
+);
+
+
+$this->end_controls_section();
+
+
+$this->start_controls_section(
+    'od_about_image_box_shap4',
+    [
+        'label' => __('Shap', 'ordainit-toolkit'),
+        'condition' => [
+            'od_design_style' => ['layout-4'],
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_about_image_box_shap21',
+    [
+        'label' => esc_html__('Shap 1', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' =>  ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-3/about/shape/rocket.png',
         ],
     ]
 );
@@ -186,7 +244,7 @@ $this->start_controls_section(
         'label' => __('Experience Box Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
         'condition' => [
-            'od_design_style' => ['layout-2'],
+            'od_design_style' => ['layout-2', 'layout-4'],
         ],
     ]
 );
@@ -199,6 +257,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-about-style-2 .it-about-experience-box' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .inner-about-style .it-about-experience' => 'background-color: {{VALUE}}',
         ],
     ]
 );
@@ -210,6 +269,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-about-style-2 .it-about-experience-title' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .inner-about-style .it-about-experience-number' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -218,7 +278,7 @@ $this->add_group_control(
     \Elementor\Group_Control_Typography::get_type(),
     [
         'name' => 'od_about_experience_box_title_typography',
-        'selector' => '{{WRAPPER}} .it-about-style-2 .it-about-experience-title',
+        'selector' => '{{WRAPPER}} .it-about-style-2 .it-about-experience-title, {{WRAPPER}} .inner-about-style .it-about-experience-number',
     ]
 );
 
@@ -229,6 +289,8 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-about-style-2 .it-about-experience-text' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .inner-about-style .it-about-experience i' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .inner-about-style .it-about-experience-icon span' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -237,7 +299,7 @@ $this->add_group_control(
     \Elementor\Group_Control_Typography::get_type(),
     [
         'name' => 'od_about_experience_box_subtitle_typography',
-        'selector' => '{{WRAPPER}} .it-about-style-2 .it-about-experience-text',
+        'selector' => '{{WRAPPER}} .it-about-style-2 .it-about-experience-text, {{WRAPPER}} .inner-about-style .it-about-experience i',
     ]
 );
 

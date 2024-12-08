@@ -187,7 +187,54 @@ class od_About_Image_Box extends Widget_Base
                 <?php endif; ?>
 
             </div>
-        <?php elseif ($settings['od_design_style']  == 'layout-4'): ?>
+        <?php elseif ($settings['od_design_style']  == 'layout-4'):
+
+
+            $od_about_image_box1 = $settings['od_about_image_box1'];
+            $od_about_image_box2 = $settings['od_about_image_box2'];
+            $od_about_image_box3 = $settings['od_about_image_box3'];
+            $od_about_image_box_shap21 = $settings['od_about_image_box_shap21'];
+            $od_about_experienced_box4_counter_text = $settings['od_about_experienced_box4_counter_text'];
+            $od_about_experienced_box4_counter_number = $settings['od_about_experienced_box4_counter_number'];
+
+
+        ?>
+            <div class="inner-about-style">
+
+
+                <div class="it-about-thumb-wrap d-sm-flex align-items-center justify-content-center justify-content-lg-end">
+                    <div class="it-about-thumb-box d-flex flex-column">
+                        <div class="it-about-thumb-1 text-center text-sm-end">
+                            <img src="<?php echo esc_url($od_about_image_box1['url'], 'ordainit-toolkit'); ?>" alt="">
+                        </div>
+                        <div class="it-about-thumb-2">
+                            <img src="<?php echo esc_url($od_about_image_box2['url'], 'ordainit-toolkit'); ?>" alt="">
+                        </div>
+                    </div>
+                    <div class="it-about-thumb-single text-center text-sm-start">
+                        <div class="it-about-thumb-shape d-none d-sm-block">
+                            <img src="<?php echo esc_url($od_about_image_box_shap21['url'], 'ordainit-toolkit'); ?>" alt="">
+                        </div>
+                        <img class="mb-30" src="<?php echo esc_url($od_about_image_box3['url'], 'ordainit-toolkit'); ?>" alt="">
+                        <div class="it-about-experience p-relative">
+                            <div class="it-about-experience-icon">
+                                <span>
+                                    <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.6406 7.41602L28.0643 7.41602L28.0643 21.8397" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M7.86719 27.6133L27.8632 7.6173" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <h3 class="it-about-experience-number">
+                                <b class="purecounter" data-purecounter-duration="0" data-purecounter-end="<?php echo esc_attr($od_about_experienced_box4_counter_number, 'ordainit-toolkit'); ?>"><?php echo esc_html($od_about_experienced_box4_counter_number, 'ordainit-toolkit'); ?></b>
+                            </h3>
+                            <i><?php echo esc_html($od_about_experienced_box4_counter_text, 'ordainit-toolkit'); ?></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         <?php else: ?>
 
 

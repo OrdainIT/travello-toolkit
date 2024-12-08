@@ -36,3 +36,12 @@ h3.it-discover-passenger-categories span {
   height: 50px;
   line-height: 30px;
 }
+
+.elementor-widget-container .it-destination-2-thumb img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.elementor-widget-container .it-instagram-thumb img {
+  border-radius: 10px;
+}

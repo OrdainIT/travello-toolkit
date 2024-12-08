@@ -208,6 +208,8 @@ class OD_Core_Plugin
 			'about-image-box',
 			'working-box',
 			'destination-slider',
+			'destination',
+			'social-feed',
 		];
 	}
 

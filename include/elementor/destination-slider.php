@@ -123,73 +123,52 @@ class Od_Destination_Slider extends Widget_Base
         $od_destination_slider_autoplay_switcher = $settings['od_destination_slider_autoplay_switcher'];
 ?>
 
-        <?php if ($settings['od_design_style']  == 'layout-2'): ?>
+        <?php if ($settings['od_design_style']  == 'layout-2'):
+
+            $od_destination_title_content_title = $settings['od_destination_title_content_title'];
+            $od_destination_title_content_subtitle = $settings['od_destination_title_content_subtitle'];
+            $od_destination_title_content_description = $settings['od_destination_title_content_description'];
+            $od_destination_title_content_btn_text = $settings['od_destination_title_content_btn_text'];
+            $od_destination_title_content_btn_url = $settings['od_destination_title_content_btn_url'];
+            $od_destination_slider_shap_img = $settings['od_destination_slider_shap_img'];
+        ?>
             <div class="it-destination-2-area it-destination-2-pt it-destination-2-overlay p-relative pt-120 pb-120 fix">
                 <div class="it-destination-2-shape-box">
                     <div class="it-destination-2-shape-1 d-none d-xl-block">
-                        <img src="assets/img/home-2/destination/shape/d-walk.png" alt="">
+                        <img src="<?php echo esc_url($od_destination_slider_shap_img['url'], 'ordainit-toolkit'); ?>" alt="">
                     </div>
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-4 col-lg-4">
                             <div class="it-destination-2-title-box">
-                                <span class="it-section-subtitle">DESTINATION LIST</span>
-                                <h3 class="it-section-title">Explore the Beautiful Places Around World</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do..</p>
+                                <span class="it-section-subtitle"><?php echo od_kses($od_destination_title_content_subtitle, 'ordainit-toolkit'); ?></span>
+                                <h3 class="it-section-title"><?php echo od_kses($od_destination_title_content_title, 'ordainit-toolkit'); ?></h3>
+                                <p><?php echo od_kses($od_destination_title_content_description, 'ordainit-toolkit'); ?></p>
                             </div>
                             <div class="it-destination-2-button">
-                                <a href="about.html" class="it-btn-secondary">Discover More</a>
+                                <a href="<?php echo esc_url($od_destination_title_content_btn_url, 'ordainit-toolkit'); ?>" class="it-btn-secondary"><?php echo esc_html($od_destination_title_content_btn_text, 'ordainit-toolkit'); ?></a>
                             </div>
                         </div>
                         <div class="col-xl-8 col-lg-8">
                             <div class="it-destination-2-slider-wrap p-relative">
                                 <div class="swiper-container it-destination-2-active">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="it-destination-2-item p-relative">
-                                                <div class="it-destination-2-thumb">
-                                                    <img src="assets/img/home-2/destination/d-1-1.jpg" alt="">
-                                                </div>
-                                                <div class="it-destination-2-text text-center">
-                                                    <h3 class="it-destination-2-place"><a href="destination.html">Angola</a></h3>
-                                                    <span class="it-destination-2-tourist">15 Tours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="it-destination-2-item p-relative">
-                                                <div class="it-destination-2-thumb">
-                                                    <img src="assets/img/home-2/destination/d-1-2.jpg" alt="">
-                                                </div>
-                                                <div class="it-destination-2-text text-center">
-                                                    <h3 class="it-destination-2-place"><a href="destination.html">new york</a></h3>
-                                                    <span class="it-destination-2-tourist">20 Tours</span>
+                                        <?php foreach ($od_destination_slider_content_wrap as $single_item_desti_slide):
+                                            $desti_slider_img_url = $single_item_desti_slide['od_destination_slider_image'];
+                                        ?>
+                                            <div class="swiper-slide">
+                                                <div class="it-destination-2-item p-relative">
+                                                    <div class="it-destination-2-thumb">
+                                                        <img src="<?php echo esc_url($desti_slider_img_url['url'], 'ordainit-toolkit'); ?>" alt="">
+                                                    </div>
+                                                    <div class="it-destination-2-text text-center">
+                                                        <h3 class="it-destination-2-place"><a href="<?php echo esc_url($single_item_desti_slide['od_destination_slider_url'], 'ordainit-toolkit'); ?>"><?php echo esc_html($single_item_desti_slide['od_destination_slider_title'], 'ordainit-toolkit'); ?></a></h3>
+                                                        <span class="it-destination-2-tourist"><?php echo esc_html($single_item_desti_slide['od_destination_slider_subtitle'], 'ordainit-toolkit'); ?></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="it-destination-2-item p-relative">
-                                                <div class="it-destination-2-thumb">
-                                                    <img src="assets/img/home-2/destination/d-1-3.jpg" alt="">
-                                                </div>
-                                                <div class="it-destination-2-text text-center">
-                                                    <h3 class="it-destination-2-place"><a href="destination.html">Switzerland</a></h3>
-                                                    <span class="it-destination-2-tourist">08 Tours</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="it-destination-2-item p-relative">
-                                                <div class="it-destination-2-thumb">
-                                                    <img src="assets/img/home-2/destination/d-1-4.jpg" alt="">
-                                                </div>
-                                                <div class="it-destination-2-text text-center">
-                                                    <h3 class="it-destination-2-place"><a href="destination.html">Europe</a></h3>
-                                                    <span class="it-destination-2-tourist">20 Tours</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                                 <div class="it-destination-2-arrow-box d-none d-md-block">
@@ -207,7 +186,62 @@ class Od_Destination_Slider extends Widget_Base
             </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
+            <div class="it-destination-slider-wrap">
+                <div class="swiper-container it-popular-active">
+                    <div class="swiper-wrapper">
+
+                        <?php foreach ($od_destination_slider_content_wrap as $single_destination_wrap3):
+                            $od_destination_thumb_url3 = $single_destination_wrap3['od_destination_slider_image'];
+                        ?>
+                            <div class="swiper-slide">
+                                <div class="it-destination-item p-relative">
+                                    <div class="it-destination-thumb">
+                                        <a href="<?php echo esc_url($single_destination_wrap3['od_destination_slider_url'], 'ordainit-toolkit'); ?>">
+                                            <img src="<?php echo esc_url($od_destination_thumb_url3['url'], 'ordainit-toolkit'); ?>" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="it-destination-content">
+                                        <h3 class="it-destination-title"><a href="<?php echo esc_url($single_destination_wrap3['od_destination_slider_url'], 'ordainit-toolkit'); ?>"><?php echo esc_html($single_destination_wrap3['od_destination_slider_title'], 'ordainit-toolkit'); ?></a></h3>
+                                        <span><?php echo esc_html($single_destination_wrap3['od_destination_slider_subtitle'], 'ordainit-toolkit'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endforeach; ?>
+
+                    </div>
+                </div>
+            </div>
+
         <?php elseif ($settings['od_design_style']  == 'layout-4'): ?>
+
+            <div class="swiper-container it-travel-feat-active">
+                <div class="swiper-wrapper">
+
+                    <?php foreach ($od_destination_slider_content_wrap as $single_destination_wrap4):
+                        $od_destination_thumb_url4 = $single_destination_wrap4['od_destination_slider_image'];
+                    ?>
+                        <div class="swiper-slide">
+                            <div class="it-travel-feat-item p-relative">
+                                <div class="it-travel-feat-thumb fix p-relative mb-25">
+                                    <img src="<?php echo esc_url($od_destination_thumb_url4['url'], 'ordainit-toolkit'); ?>" alt="">
+                                </div>
+                                <h3 class="it-travel-feat-title text-center"><?php echo esc_html($single_destination_wrap4['od_destination_slider_title'], 'ordainit-toolkit'); ?></h3>
+                                <div class="it-travel-feat-content z-index text-center">
+                                    <h3 class="it-travel-feat-title">
+                                        <a href="<?php echo esc_url($single_destination_wrap4['od_destination_slider_url'], 'ordainit-toolkit'); ?>"><?php echo esc_html($single_destination_wrap4['od_destination_slider_title'], 'ordainit-toolkit'); ?></a>
+                                    </h3>
+                                    <p><?php echo od_kses($single_destination_wrap4['od_destination_slider_description'], 'ordainit-toolkit'); ?></p>
+                                    <div class="it-travel-feat-button">
+                                        <a href="<?php echo esc_url($single_destination_wrap4['od_destination_slider_url'], 'ordainit-toolkit'); ?>"><?php echo esc_html($single_destination_wrap4['od_destination_slider_btn_text'], 'ordainit-toolkit'); ?></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         <?php else: ?>
 
 
@@ -319,6 +353,74 @@ class Od_Destination_Slider extends Widget_Base
                     navigation: {
                         prevEl: ".destination-2-prev",
                         nextEl: ".destination-2-next",
+                    },
+                });
+
+                ////////////////////////////////////////////////////
+                // 17. Swiper Js
+                const desination_slider_autoplay3 = <?php echo $od_destination_slider_autoplay_switcher ? 'true' : 'false'; ?>;
+                const poPularswiper = new Swiper(".it-popular-active", {
+                    speed: 1000,
+                    slidesPerView: 6,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: desination_slider_autoplay3 ? {
+                        delay: 3000
+                    } : false,
+                    breakpoints: {
+                        1400: {
+                            slidesPerView: 6,
+                        },
+                        1200: {
+                            slidesPerView: 4,
+                        },
+                        992: {
+                            slidesPerView: 3,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        576: {
+                            slidesPerView: 1,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                        },
+                    },
+                });
+
+
+
+                ////////////////////////////////////////////////////
+                // 18. Swiper Js
+                const desination_slider_autoplay4 = <?php echo $od_destination_slider_autoplay_switcher ? 'true' : 'false'; ?>;
+                const travelFeatwiper = new Swiper(".it-travel-feat-active", {
+                    speed: 1000,
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: desination_slider_autoplay4 ? {
+                        delay: 3000
+                    } : false,
+                    breakpoints: {
+                        1400: {
+                            slidesPerView: 4,
+                        },
+                        1200: {
+                            slidesPerView: 4,
+                        },
+                        992: {
+                            slidesPerView: 3,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        576: {
+                            slidesPerView: 1,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                        },
                     },
                 });
 
