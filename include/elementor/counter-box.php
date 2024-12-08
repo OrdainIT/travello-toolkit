@@ -128,12 +128,18 @@ class OD_Counter_Box extends Widget_Base
 
         <?php if ($settings['od_design_style']  == 'layout-4'): ?>
             <div class="it-funfact-5">
-                <div class="it-funfact-item">
+                <div class="it-funfact-item d-flex justify-content-center">
                     <div class="it-funfact-text">
                         <h3 class="it-funfact-number">
-                            <b class="purecounter" data-purecounter-duration="0" data-purecounter-end="56">56</b>
+                            <b
+                                class="purecounter"
+                                data-purecounter-duration="0"
+                                data-purecounter-end="<?php echo esc_attr($od_counter_box_end_value, 'ordainit-toolkit'); ?>">
+                                <?php echo esc_html($od_counter_box_end_value, 'ordainit-toolkit'); ?>
+                            </b>
+                            <?php echo esc_html($od_counter_box_subtext, 'ordainit-toolkit') ?>
                         </h3>
-                        <p>COUNTRIES VISITED</p>
+                        <p><?php echo esc_html($od_counter_box_title, 'ordainit-toolkit') ?></p>
                     </div>
                 </div>
             </div>
