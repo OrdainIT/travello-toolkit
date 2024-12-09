@@ -81,7 +81,7 @@ $this->add_control(
         'label' => __('Title', 'ordainit-toolkit'),
         'type' => Controls_Manager::TEXT,
         'default' => esc_html__('OD Title', 'ordainit-toolkit'),
-        'placeholder' => esc_html__('Type your title here', 'textdomain'),
+        'placeholder' => esc_html__('Type your title here', 'ordainit-toolkit'),
         'label_block' => true,
     ]
 );
@@ -91,7 +91,7 @@ $this->add_control(
         'label' => __('Subtitle', 'ordainit-toolkit'),
         'type' => Controls_Manager::TEXT,
         'default' => esc_html__('OD Subtitle', 'ordainit-toolkit'),
-        'placeholder' => esc_html__('Type your subtitle here', 'textdomain'),
+        'placeholder' => esc_html__('Type your subtitle here', 'ordainit-toolkit'),
         'label_block' => true,
         'condition' => [
             'od_design_style' => ['layout-1', 'layout-2']
@@ -104,7 +104,7 @@ $this->add_control(
         'label' => __('Description', 'ordainit-toolkit'),
         'type' => Controls_Manager::TEXTAREA,
         'default' => esc_html__('OD Description', 'ordainit-toolkit'),
-        'placeholder' => esc_html__('Type your Description here', 'textdomain'),
+        'placeholder' => esc_html__('Type your Description here', 'ordainit-toolkit'),
         'label_block' => true,
     ]
 );

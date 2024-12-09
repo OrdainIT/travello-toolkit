@@ -210,6 +210,7 @@ class OD_Core_Plugin
 			'destination-slider',
 			'destination',
 			'social-feed',
+			'testimonial-slider',
 		];
 	}
 

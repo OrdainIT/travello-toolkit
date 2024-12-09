@@ -45,3 +45,8 @@ h3.it-discover-passenger-categories span {
 .elementor-widget-container .it-instagram-thumb img {
   border-radius: 10px;
 }
+/* Testimonial 2 thumb */
+
+.elementor-widget-container .it-testi-2-area .it-testi-2-thumb img {
+  border-radius: 170px 10px 10px 10px;
+}
