@@ -126,10 +126,81 @@ class OD_Testimonial_Slider extends Widget_Base
         $od_testimonial_thumbnail = $settings['od_testimonial_thumbnail'];
         $od_testimonial_shape_image_1 = $settings['od_testimonial_shape_image_1'];
         $od_testimonial_shape_image_2 = $settings['od_testimonial_shape_image_2'];
+        $od_testimonial_arrow_switcher = $settings['od_testimonial_arrow_switcher'];
+        $od_testimonial_pagination_switcher = $settings['od_testimonial_pagination_switcher'];
+        $od_testimonial_quote_switcher = $settings['od_testimonial_quote_switcher'];
 ?>
 
 
-        <?php if ($settings['od_design_style']  == 'layout-4'): ?>
+        <?php if ($settings['od_design_style']  == 'layout-5'): ?>
+
+            <div class="it-testi-inner-wrapp p-relative">
+                <div class="swiper-container inner-testi-active">
+                    <div class="swiper-wrapper">
+
+                        <?php foreach ($od_testimonial_lists as $od_testimonial_list):
+                            $testimonial_avatar_url = $od_testimonial_list['od_testimonial_list_avatar'];
+                            $testimonial_rating_star = $od_testimonial_list['od_testimonial_list_rating'];
+                        ?>
+
+                            <div class="swiper-slide">
+                                <div class="it-testi-inner-item p-relative">
+                                    <div class="it-testi-inner-review mb-20">
+                                        <?php
+                                        $rating = intval($testimonial_rating_star);
+                                        for ($i = 1; $i <= $rating; $i++) : ?>
+                                            <span><i class="fa-solid fa-star"></i></span>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <div class="it-testi-inner-text">
+                                        <p>“<?php echo od_kses($od_testimonial_list['od_testimonial_list_description'], 'orsdainit-toolkit') ?>”</p>
+                                    </div>
+                                    <div class="it-testi-inner-author-box d-flex align-items-center">
+                                        <div class="it-testi-inner-avater mr-20">
+                                            <img
+                                                src="<?php echo esc_url($testimonial_avatar_url['url'], 'ordainit-toolkit') ?>"
+                                                alt="<?php echo esc_html($od_testimonial_list['od_testimonial_list_author']) ?>">
+                                        </div>
+                                        <div class="it-testi-inner-author-info">
+                                            <h5><?php echo esc_html($od_testimonial_list['od_testimonial_list_author'], 'ordainit-toolkit') ?></h5>
+                                            <span><?php echo esc_html($od_testimonial_list['od_testimonial_list_designation'], 'ordainit-toolkit') ?></span>
+                                        </div>
+                                    </div>
+
+                                    <?php if (!empty($od_testimonial_quote_switcher)) : ?>
+                                        <div class="it-testi-inner-quote d-none d-xl-block">
+                                            <span>
+                                                <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M19.6827 0C30.6706 0 38.6242 9.32996 38.6242 22.9052C38.6242 42.7317 23.8203 56.7736 2.62616 59.4793C2.21964 59.5155 1.81359 59.4063 1.4782 59.1704C1.14281 58.9345 0.899378 58.5868 0.790157 58.1878C0.680936 57.7888 0.712796 57.3635 0.880231 56.9859C1.04767 56.6083 1.33992 56.3023 1.70661 56.1206C9.84407 52.4819 13.9819 47.8167 14.4876 43.1984C14.7724 41.7621 14.5509 40.2698 13.8619 38.9823C13.1728 37.6948 12.06 36.6939 10.7177 36.1541C4.69505 34.7079 0.695312 27.1039 0.695312 19.2667C0.695312 14.1568 2.6958 9.25629 6.25663 5.6431C9.81746 2.0299 14.647 0 19.6827 0Z" fill="currentColor" />
+                                                    <path d="M61.0577 0C72.0456 0 79.9992 9.32996 79.9992 22.9052C79.9992 42.7317 65.1953 56.7736 44.0012 59.4793C43.5946 59.5155 43.1886 59.4063 42.8532 59.1704C42.5178 58.9345 42.2744 58.5868 42.1652 58.1878C42.0559 57.7888 42.0878 57.3635 42.2552 56.9859C42.4227 56.6083 42.7149 56.3023 43.0816 56.1206C51.2191 52.4819 55.3569 47.8167 55.8626 43.1984C56.1474 41.7621 55.9259 40.2698 55.2369 38.9823C54.5478 37.6948 53.435 36.6939 52.0927 36.1541C46.07 34.7079 42.0703 27.1039 42.0703 19.2667C42.0703 14.1568 44.0708 9.25629 47.6316 5.6431C51.1925 2.0299 56.022 0 61.0577 0Z" fill="currentColor" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <?php if (!empty($od_testimonial_arrow_switcher)) : ?>
+                    <div class="it-testi-inner-arrow mt-40 d-flex justify-content-between">
+                        <button class="it-testi-prev" tabindex="0">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button class="it-testi-next" tabindex="0">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($od_testimonial_pagination_switcher)) : ?>
+                    <div class="<?php echo $od_testimonial_arrow_switcher ? 'it-testi-inner-dots' : 'it-testi-inner-dots mt-40 z-3' ?>"></div>
+                <?php endif; ?>
+            </div>
+
+        <?php elseif ($settings['od_design_style']  == 'layout-4'): ?>
 
             <div class="it-testi-4-slider-wrap">
                 <div class="swiper-container it-testi-4-active">
@@ -161,6 +232,11 @@ class OD_Testimonial_Slider extends Widget_Base
                         <?php endforeach; ?>
                     </div>
                 </div>
+                <?php if (!empty($od_testimonial_pagination_switcher)) : ?>
+                    <div class="row text-center mt-25">
+                        <div class="it-testi-4-dots"></div>
+                    </div>
+                <?php endif; ?>
             </div>
 
         <?php elseif ($settings['od_design_style']  == 'layout-3'): ?>
@@ -192,17 +268,18 @@ class OD_Testimonial_Slider extends Widget_Base
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="it-testi-2-arrow-box text-end">
-                        <button class="testi-2-prev">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
-                        <button class="testi-2-prev testi-2-next">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
+                    <?php if (!empty($od_testimonial_arrow_switcher)) : ?>
+                        <div class="it-testi-2-arrow-box text-end">
+                            <button class="testi-2-prev">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                            <button class="testi-2-prev testi-2-next">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-
 
         <?php elseif ($settings['od_design_style']  == 'layout-2'): ?>
 
@@ -226,14 +303,16 @@ class OD_Testimonial_Slider extends Widget_Base
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6 col-md-4 col-sm-4">
-                            <div class="it-testi-2-arrow-box text-end">
-                                <button class="testi-2-prev">
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </button>
-                                <button class="testi-2-prev testi-2-next">
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
+                            <?php if (!empty($od_testimonial_arrow_switcher)) : ?>
+                                <div class="it-testi-2-arrow-box text-end">
+                                    <button class="testi-2-prev">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                    </button>
+                                    <button class="testi-2-prev testi-2-next">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="it-testi-2-wrap mt-70">
@@ -270,9 +349,12 @@ class OD_Testimonial_Slider extends Widget_Base
                                                                 <h3 class="it-testi-2-avater-title mb-10"><?php echo esc_html($od_testimonial_list['od_testimonial_list_author'], 'ordainit-toolkit') ?></h3>
                                                                 <span><?php echo esc_html($od_testimonial_list['od_testimonial_list_designation'], 'ordainit-toolkit') ?></span>
                                                             </div>
-                                                            <div class="it-testi-2-avater-quote">
-                                                                <i class="fa-solid fa-quote-right"></i>
-                                                            </div>
+
+                                                            <?php if (!empty($od_testimonial_quote_switcher)) : ?>
+                                                                <div class="it-testi-2-avater-quote">
+                                                                    <i class="fa-solid fa-quote-right"></i>
+                                                                </div>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,7 +380,7 @@ class OD_Testimonial_Slider extends Widget_Base
                             <div class="it-testimonial-item">
                                 <div class="it-testimonial-rating">
                                     <?php
-                                    $rating = intval($testimonial_rating_star); // Convert to integer for safety
+                                    $rating = intval($testimonial_rating_star);
                                     for ($i = 1; $i <= $rating; $i++) : ?>
                                         <span><i class="fa-solid fa-star"></i></span>
                                     <?php endfor; ?>
@@ -309,9 +391,12 @@ class OD_Testimonial_Slider extends Widget_Base
                                 <div class="it-testimonial-avater-box d-flex align-items-center">
                                     <div class="it-testimonial-avater-thumb p-relative">
                                         <img src="<?php echo esc_url($testimonial_avatar_url['url'], 'ordainit-toolkit') ?>" alt="<?php echo esc_html($od_testimonial_list['od_testimonial_list_author']) ?>">
-                                        <div class="it-testimonial-avater-icon">
-                                            <i class="fa-solid fa-quote-right"></i>
-                                        </div>
+
+                                        <?php if (!empty($od_testimonial_quote_switcher)) : ?>
+                                            <div class="it-testimonial-avater-icon">
+                                                <i class="fa-solid fa-quote-right"></i>
+                                            </div>
+                                        <?php endif ?>
                                     </div>
                                     <div class="it-testimonial-avater-info">
                                         <h3 class="it-testimonial-avater-title"><?php echo esc_html($od_testimonial_list['od_testimonial_list_author'], 'ordainit-toolkit') ?></h3>
@@ -334,6 +419,7 @@ class OD_Testimonial_Slider extends Widget_Base
                 const sliderAutoplay2 = <?php echo $od_testimonial_slider_autoplay ? 'true' : 'false'; ?>;
                 const sliderAutoplay3 = <?php echo $od_testimonial_slider_autoplay ? 'true' : 'false'; ?>;
                 const sliderAutoplay4 = <?php echo $od_testimonial_slider_autoplay ? 'true' : 'false'; ?>;
+                const sliderAutoplay5 = <?php echo $od_testimonial_slider_autoplay ? 'true' : 'false'; ?>;
 
                 // Testimonial Layout 1
                 const testiMonialswiper = new Swiper('.it-testimonial-active', {
@@ -445,7 +531,7 @@ class OD_Testimonial_Slider extends Widget_Base
                     slidesPerView: 1,
                     spaceBetween: 30,
                     loop: true,
-                    autoplay: sliderAutoplay2 ? {
+                    autoplay: sliderAutoplay4 ? {
                         delay: 3000
                     } : false,
                     breakpoints: {
@@ -470,6 +556,46 @@ class OD_Testimonial_Slider extends Widget_Base
                     },
                     pagination: {
                         el: ".it-testi-4-dots",
+                        clickable: true,
+                    }
+
+                });
+
+                // Testi - layout - 5
+                const innerTestiSwiper = new Swiper('.inner-testi-active', {
+                    speed: 1000,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: sliderAutoplay5 ? {
+                        delay: 3000
+                    } : false,
+                    breakpoints: {
+                        '1400': {
+                            slidesPerView: 1,
+                        },
+                        '1200': {
+                            slidesPerView: 1,
+                        },
+                        '992': {
+                            slidesPerView: 1,
+                        },
+                        '768': {
+                            slidesPerView: 1,
+                        },
+                        '576': {
+                            slidesPerView: 1,
+                        },
+                        '0': {
+                            slidesPerView: 1,
+                        },
+                    },
+                    navigation: {
+                        prevEl: '.it-testi-prev',
+                        nextEl: '.it-testi-next',
+                    },
+                    pagination: {
+                        el: ".it-testi-inner-dots",
                         clickable: true,
                     }
 
