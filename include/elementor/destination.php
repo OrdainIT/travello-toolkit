@@ -123,33 +123,49 @@ class Od_Destination extends Widget_Base
         $od_destination_content_subtitle = $settings['od_destination_content_subtitle'];
         $od_destination_content_url = $settings['od_destination_content_url'];
         $od_destination_content_thumbnail = $settings['od_destination_content_thumbnail'];
+        $od_destination_content_tour_count = $settings['od_destination_content_tour_count'];
+        $od_destination_content_traveler_count = $settings['od_destination_content_traveler_count'];
 ?>
 
-        <div class="it-inner-destination">
-            <div class="it-dest-item">
-                <div class="it-dest-thumb fix mb-20">
-                    <img src="<?php echo esc_url($od_destination_content_thumbnail['url'], 'ordainit-toolkit'); ?>" alt="">
-                </div>
-                <div class="it-dest-content d-flex align-items-center justify-content-between">
-                    <div class="it-dest-text">
-                        <h3 class="it-dest-title">
-                            <a href="<?php echo esc_url($od_destination_content_url, 'ordainit-toolkit'); ?>"><?php echo esc_html($od_destination_content_title, 'ordainit-toolkit'); ?></a>
-                        </h3>
-                        <span><?php echo esc_html($od_destination_content_subtitle, 'ordainit-toolkit'); ?></span>
-                    </div>
-                    <div class="it-dest-icon">
-                        <a href="<?php echo esc_url($od_destination_content_url, 'ordainit-toolkit'); ?>">
-                            <i class="fa-regular fa-arrow-right-long"></i>
-                        </a>
+        <?php if ($settings['od_design_style']  == 'layout-2'): ?>
+
+            <div class="it-destination-list-item p-relative">
+                <span class="it-destination-list-number"><?php echo esc_html($od_destination_content_tour_count, 'ordainit-toolkit'); ?> Tours</span>
+                <div class="it-destination-list-thumb fix p-relative">
+                    <a href="">
+                        <img src="<?php echo esc_url($od_destination_content_thumbnail['url'], 'ordainit-toolkit'); ?>" alt="">
+                    </a>
+                    <div class="it-destination-list-text">
+                        <h3 class="it-destination-list-title"><a href="<?php echo esc_url($od_destination_content_url, 'ordainit-toolkit'); ?>"><?php echo esc_html($od_destination_content_title, 'ordainit-toolkit'); ?></a></h3>
+                        <span class="it-destination-list-departures"><?php echo esc_html($od_destination_content_traveler_count, 'ordainit-toolkit'); ?> Departures</span>
                     </div>
                 </div>
             </div>
-        </div>
 
+        <?php else: ?>
 
+            <div class="it-inner-destination">
+                <div class="it-dest-item">
+                    <div class="it-dest-thumb fix mb-20">
+                        <img src="<?php echo esc_url($od_destination_content_thumbnail['url'], 'ordainit-toolkit'); ?>" alt="">
+                    </div>
+                    <div class="it-dest-content d-flex align-items-center justify-content-between">
+                        <div class="it-dest-text">
+                            <h3 class="it-dest-title">
+                                <a href="<?php echo esc_url($od_destination_content_url, 'ordainit-toolkit'); ?>"><?php echo esc_html($od_destination_content_title, 'ordainit-toolkit'); ?></a>
+                            </h3>
+                            <span><?php echo esc_html($od_destination_content_subtitle, 'ordainit-toolkit'); ?></span>
+                        </div>
+                        <div class="it-dest-icon">
+                            <a href="<?php echo esc_url($od_destination_content_url, 'ordainit-toolkit'); ?>">
+                                <i class="fa-regular fa-arrow-right-long"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
-
+        <?php endif; ?>
 
         <script>
             jQuery(document).ready(function($) {

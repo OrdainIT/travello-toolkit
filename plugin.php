@@ -211,6 +211,9 @@ class OD_Core_Plugin
 			'destination',
 			'social-feed',
 			'testimonial-slider',
+			'testimonial',
+			'video-play-btn',
+			'team',
 		];
 	}
 

@@ -135,7 +135,7 @@ $this->add_control(
         'label' => __('Title', 'ordainit-toolkit'),
         'type' => Controls_Manager::TEXT,
         'default' => esc_html__('OD Icon Box Title', 'ordainit-toolkit'),
-        'placeholder' => esc_html__('Type your title here', 'textdomain'),
+        'placeholder' => esc_html__('Type your title here', 'ordainit-toolkit'),
         'label_block' => true,
     ]
 );
@@ -146,7 +146,7 @@ $this->add_control(
         'label' => __('Description', 'ordainit-toolkit'),
         'type' => Controls_Manager::TEXTAREA,
         'default' => esc_html__('OD Icon Box Description', 'ordainit-toolkit'),
-        'placeholder' => esc_html__('Type Description title here', 'textdomain'),
+        'placeholder' => esc_html__('Type Description title here', 'ordainit-toolkit'),
         'label_block' => true,
         'condition' => [
             'od_design_style' => ['layout-1', 'layout-4']
