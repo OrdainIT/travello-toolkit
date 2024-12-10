@@ -215,6 +215,8 @@ class OD_Core_Plugin
 			'video-play-btn',
 			'team',
 			'team-slider',
+			'contact-box',
+			'tour-category',
 		];
 	}
 

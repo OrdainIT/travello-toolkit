@@ -79,7 +79,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::MEDIA,
         'default' => [
             'url' =>
-            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy//home-2/testimonial/thumb/test-2-1.jpg',
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-2/testimonial/thumb/test-2-1.jpg',
         ],
     ]
 );
@@ -150,7 +150,7 @@ $this->add_control(
             ],
             [
                 'name' => 'od_testimonial_list_avatar',
-                'label' => esc_html__('Choose Image', 'textdomain'),
+                'label' => esc_html__('Choose Image', 'ordainit-toolkit'),
                 'description' => esc_html__('It works for layout - 1 , 3, 4 & 5'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
@@ -168,7 +168,7 @@ $this->add_control(
             ],
             [
                 'name' => 'od_testimonial_list_rating',
-                'label' => esc_html__('Select Star', 'textdomain'),
+                'label' => esc_html__('Select Star', 'ordainit-toolkit'),
                 'description' => esc_html__('It works for layout - 1, 4 & 5'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
