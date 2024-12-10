@@ -214,6 +214,7 @@ class OD_Core_Plugin
 			'testimonial',
 			'video-play-btn',
 			'team',
+			'team-slider',
 		];
 	}
 

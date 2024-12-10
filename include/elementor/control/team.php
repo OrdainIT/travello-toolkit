@@ -146,6 +146,16 @@ $this->add_control(
 );
 
 $this->add_control(
+    'od_team_single_social_color',
+    [
+        'label' => esc_html__('Social Icon Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-team-social-box a' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
     'od_team_single_social_bg_color',
     [
         'label' => esc_html__('Social BG Color', 'ordainit-toolkit'),
@@ -199,6 +209,17 @@ $this->add_control(
 );
 
 $this->add_control(
+    'od_team_single_social_hover_color',
+    [
+        'label' => esc_html__('Social Icon Hover Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-team-social-box a:hover' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
     'od_team_single_social_hover_bg_color',
     [
         'label' => esc_html__('Social BG Hover Color', 'ordainit-toolkit'),
@@ -237,6 +258,25 @@ $this->add_group_control(
         'label' => esc_html__('Designation Typography', 'ordainit-toolkit'),
         'name' => 'od_team_single_designation_typography',
         'selector' => '{{WRAPPER}} .it-team-designation',
+    ]
+);
+
+
+$this->add_control(
+    'hr_2',
+    [
+        'type' => \Elementor\Controls_Manager::DIVIDER,
+    ]
+);
+
+$this->add_control(
+    'od_team_single_social_box_bg_color',
+    [
+        'label' => esc_html__('Social Box BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-team-social-box' => 'background-color: {{VALUE}}',
+        ],
     ]
 );
 

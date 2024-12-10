@@ -59,6 +59,6 @@ h3.it-discover-passenger-categories span {
 }
 
 /* Team social box */
-.it-team-social-box {
-  padding: 10px 20px;
+.elementor-widget-container .it-team-social-box {
+  padding: 10px 20px !important;
 }
