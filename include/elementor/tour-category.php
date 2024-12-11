@@ -139,7 +139,7 @@ class OD_Tour_Category extends Widget_Base
                                     </span>
                                 </div>
                                 <span class="it-section-subtitle"><?php echo esc_html($od_tour_category_subtitle, 'ordainit-toolkit') ?></span>
-                                <h3 class="it-section-title text-white"><?php echo esc_html($od_tour_category_title, 'ordainit-toolkit') ?></h3>
+                                <h3 class="it-section-title"><?php echo esc_html($od_tour_category_title, 'ordainit-toolkit') ?></h3>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-6">

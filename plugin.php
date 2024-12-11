@@ -217,6 +217,9 @@ class OD_Core_Plugin
 			'team-slider',
 			'contact-box',
 			'tour-category',
+			'gallery-img',
+			'portfolio',
+			'stories',
 		];
 	}
 

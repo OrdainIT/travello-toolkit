@@ -62,3 +62,8 @@ h3.it-discover-passenger-categories span {
 .elementor-widget-container .it-team-social-box {
   padding: 10px 20px !important;
 }
+
+/* Category icon box color */
+.it-categories-item:hover .it-categories-icon span {
+  background-color: #ff6525 !important;
+}
