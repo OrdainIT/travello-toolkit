@@ -19,6 +19,7 @@ $this->add_control(
             'layout-2' => esc_html__('Layout 2', 'ordainit-toolkit'),
             'layout-3' => esc_html__('Layout 3', 'ordainit-toolkit'),
             'layout-4' => esc_html__('Layout 4', 'ordainit-toolkit'),
+            'layout-5' => esc_html__('Layout 5', 'ordainit-toolkit'),
         ],
         'default' => 'layout-1',
     ]
@@ -78,7 +79,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::MEDIA,
         'default' => [
             'url' =>
-            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy//home-2/testimonial/thumb/test-2-1.jpg',
+            ORDAINIT_TOOLKIT_ADDONS_URL . 'assets/dummy/home-2/testimonial/thumb/test-2-1.jpg',
         ],
     ]
 );
@@ -149,8 +150,8 @@ $this->add_control(
             ],
             [
                 'name' => 'od_testimonial_list_avatar',
-                'label' => esc_html__('Choose Image', 'textdomain'),
-                'description' => esc_html__('It works for layout - 1 , 3 & 4'),
+                'label' => esc_html__('Choose Image', 'ordainit-toolkit'),
+                'description' => esc_html__('It works for layout - 1 , 3, 4 & 5'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' =>
@@ -167,8 +168,8 @@ $this->add_control(
             ],
             [
                 'name' => 'od_testimonial_list_rating',
-                'label' => esc_html__('Select Star', 'textdomain'),
-                'description' => esc_html__('It works for layout - 1 & 4'),
+                'label' => esc_html__('Select Star', 'ordainit-toolkit'),
+                'description' => esc_html__('It works for layout - 1, 4 & 5'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => '5',
                 'options' => [
@@ -203,6 +204,7 @@ $this->add_control(
 
 $this->end_controls_section();
 
+// Testimonial settings
 $this->start_controls_section(
     'od_testimonial_settings',
     [
@@ -217,6 +219,81 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::SWITCHER,
         'label_on' => esc_html__('On', 'ordainit-toolkit'),
         'label_off' => esc_html__('Off', 'ordainit-toolkit'),
+        'return_value' => 'yes',
+        'default' => 'yes',
+    ]
+);
+
+$this->end_controls_section();
+
+// Quote Icon Switcher
+$this->start_controls_section(
+    'od_testimonial_quote_switcher_section',
+    [
+        'label' => __('Quote Icon Switcher', 'ordainit-toolkit'),
+        'condition' => [
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-5']
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_testimonial_quote_switcher',
+    [
+        'label' => esc_html__('Show / Hide Quote', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::SWITCHER,
+        'label_on' => esc_html__('Show', 'ordainit-toolkit'),
+        'label_off' => esc_html__('Hide', 'ordainit-toolkit'),
+        'return_value' => 'yes',
+        'default' => 'yes',
+    ]
+);
+
+$this->end_controls_section();
+
+// Arrow Switcher
+$this->start_controls_section(
+    'od_testimonial_arrow_switcher_section',
+    [
+        'label' => __('Testimonial Arrow Switcher', 'ordainit-toolkit'),
+        'condition' => [
+            'od_design_style' => ['layout-2', 'layout-3', 'layout-5']
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_testimonial_arrow_switcher',
+    [
+        'label' => esc_html__('Show / Hide Arrow', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::SWITCHER,
+        'label_on' => esc_html__('Show', 'ordainit-toolkit'),
+        'label_off' => esc_html__('Hide', 'ordainit-toolkit'),
+        'return_value' => 'yes',
+        'default' => 'yes',
+    ]
+);
+
+$this->end_controls_section();
+
+// Pagination Switcher
+$this->start_controls_section(
+    'od_testimonial_pagination_switcher_section',
+    [
+        'label' => __('Testimonial Pagination Switcher', 'ordainit-toolkit'),
+        'condition' => [
+            'od_design_style' => ['layout-4', 'layout-5']
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_testimonial_pagination_switcher',
+    [
+        'label' => esc_html__('Show / Hide Pagination', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::SWITCHER,
+        'label_on' => esc_html__('Show', 'ordainit-toolkit'),
+        'label_off' => esc_html__('Hide', 'ordainit-toolkit'),
         'return_value' => 'yes',
         'default' => 'yes',
     ]
@@ -297,9 +374,10 @@ $this->add_control(
         'selectors' => [
             '{{WRAPPER}} .it-testimonial-item' => 'background-color: {{VALUE}}',
             '{{WRAPPER}} .theme-bg' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-item' => 'background-color: {{VALUE}}',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-2']
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-5']
         ],
     ]
 );
@@ -324,6 +402,7 @@ $this->add_control(
             '{{WRAPPER}} .it-testimonial-dsc p' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-2-dsc i' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-4-avater-box p' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-text p' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -332,7 +411,7 @@ $this->add_group_control(
     [
         'label' => esc_html__('Description Typography', 'ordainit-toolkit'),
         'name' => 'od_testimonial_description_typography',
-        'selector' => '{{WRAPPER}} .it-testimonial-dsc p, {{WRAPPER}} .it-testi-2-dsc i, {{WRAPPER}} .it-testi-4-avater-box p',
+        'selector' => '{{WRAPPER}} .it-testimonial-dsc p, {{WRAPPER}} .it-testi-2-dsc i, {{WRAPPER}} .it-testi-4-avater-box p, {{WRAPPER}} .it-testi-inner-text p',
     ]
 );
 
@@ -346,6 +425,7 @@ $this->add_control(
             '{{WRAPPER}} .it-testimonial-avater-title' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-2-avater-title' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-4-avater-title' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-author-info h5' => 'color: {{VALUE}}',
 
         ],
     ]
@@ -355,7 +435,7 @@ $this->add_group_control(
     [
         'label' => esc_html__('Author Typography', 'ordainit-toolkit'),
         'name' => 'od_testimonial_author_typography',
-        'selector' => '{{WRAPPER}} .it-testimonial-avater-title, {{WRAPPER}} .it-testi-2-avater-title, {{WRAPPER}} .it-testi-4-avater-title',
+        'selector' => '{{WRAPPER}} .it-testimonial-avater-title, {{WRAPPER}} .it-testi-2-avater-title, {{WRAPPER}} .it-testi-4-avater-title, {{WRAPPER}} .it-testi-inner-author-info h5',
     ]
 );
 
@@ -369,6 +449,7 @@ $this->add_control(
             '{{WRAPPER}} .it-testimonial-avater-designation' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-2-avater-info span' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-4-designation-title' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-author-info span' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -377,7 +458,7 @@ $this->add_group_control(
     [
         'label' => esc_html__('Designation Typography', 'ordainit-toolkit'),
         'name' => 'od_testimonial_designation_typography',
-        'selector' => '{{WRAPPER}} .it-testimonial-avater-designation, {{WRAPPER}} .it-testi-2-avater-info span, {{WRAPPER}} .it-testi-4-designation-title',
+        'selector' => '{{WRAPPER}} .it-testimonial-avater-designation, {{WRAPPER}} .it-testi-2-avater-info span, {{WRAPPER}} .it-testi-4-designation-title, {{WRAPPER}} .it-testi-inner-author-info span',
     ]
 );
 
@@ -386,7 +467,7 @@ $this->add_control(
     [
         'type' => \Elementor\Controls_Manager::DIVIDER,
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-4']
+            'od_design_style' => ['layout-1', 'layout-4', 'layout-5']
         ],
     ]
 );
@@ -400,9 +481,10 @@ $this->add_control(
         'selectors' => [
             '{{WRAPPER}} .it-testimonial-rating span' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-4-designation-review span' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-review i' => 'color: {{VALUE}}',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-4']
+            'od_design_style' => ['layout-1', 'layout-4', 'layout-5']
         ],
     ]
 );
@@ -436,9 +518,10 @@ $this->add_control(
         'selectors' => [
             '{{WRAPPER}} .it-testimonial-rating span' => 'font-size: {{SIZE}}{{UNIT}};',
             '{{WRAPPER}} .it-testi-4-designation-review span' => 'font-size: {{SIZE}}{{UNIT}};',
+            '{{WRAPPER}} .it-testi-inner-review i' => 'font-size: {{SIZE}}{{UNIT}};',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-4']
+            'od_design_style' => ['layout-1', 'layout-4', 'layout-5']
         ],
     ]
 );
@@ -447,6 +530,9 @@ $this->add_control(
     'hr-3',
     [
         'type' => \Elementor\Controls_Manager::DIVIDER,
+        'condition' => [
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-5']
+        ],
     ]
 );
 
@@ -460,10 +546,10 @@ $this->add_control(
         'selectors' => [
             '{{WRAPPER}} .it-testimonial-avater-icon i' => 'color: {{VALUE}}',
             '{{WRAPPER}} .it-testi-2-avater-quote i' => 'color: {{VALUE}}',
-
+            '{{WRAPPER}} .it-testi-inner-quote span' => 'color: {{VALUE}}',
         ],
         'condition' => [
-            'od_design_style' => ['layout-1', 'layout-2']
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-5']
         ],
     ]
 );
@@ -491,7 +577,7 @@ $this->start_controls_section(
         'label' => __('Testimonial Arrow Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
         'condition' => [
-            'od_design_style' => ['layout-2', 'layout-3']
+            'od_design_style' => ['layout-2', 'layout-3', 'layout-5']
         ],
     ]
 );
@@ -503,7 +589,7 @@ $this->start_controls_tabs(
 $this->start_controls_tab(
     'od_testimonial_arrow_style_normal_tab',
     [
-        'label' => esc_html__('Normal', 'textdomain'),
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
     ]
 );
 $this->add_control(
@@ -513,6 +599,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button' => 'background-color: {{VALUE}}',
         ],
     ]
 );
@@ -523,6 +610,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -533,6 +621,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev' => 'border-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button' => 'border-color: {{VALUE}}',
         ],
     ]
 );
@@ -541,7 +630,7 @@ $this->end_controls_tab();
 $this->start_controls_tab(
     'od_testimonial_arrow_style_hover_tab',
     [
-        'label' => esc_html__('Hover', 'textdomain'),
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
     ]
 );
 $this->add_control(
@@ -551,6 +640,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev:hover' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button:hover' => 'background-color: {{VALUE}}',
         ],
     ]
 );
@@ -561,6 +651,7 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev:hover' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button:hover' => 'color: {{VALUE}}',
         ],
     ]
 );
@@ -571,9 +662,72 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-testi-2-arrow-box .testi-2-prev:hover' => 'border-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-arrow button:hover' => 'border-color: {{VALUE}}',
         ],
     ]
 );
+$this->end_controls_tab();
+
+$this->end_controls_tabs();
+
+$this->end_controls_section();
+
+
+// Pagination Style
+
+$this->start_controls_section(
+    'od_testimonial_pagination_style',
+    [
+        'label' => __('Testimonial pagination Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+        'condition' => [
+            'od_design_style' => ['layout-4', 'layout-5']
+        ],
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_testimonial_pagination_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_testimonial_pagination_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+$this->add_control(
+    'od_testimonial_pagination_style_normal_bg_color',
+    [
+        'label' => esc_html__('Pagination BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-testi-4-dots .swiper-pagination-bullet' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-dots .swiper-pagination-bullet' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->start_controls_tab(
+    'od_testimonial_pagination_style_active_tab',
+    [
+        'label' => esc_html__('Active', 'ordainit-toolkit'),
+    ]
+);
+$this->add_control(
+    'od_testimonial_pagination_style_active_bg_color',
+    [
+        'label' => esc_html__('Pagination BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-testi-4-dots .swiper-pagination-bullet-active' => 'background-color: {{VALUE}}',
+            '{{WRAPPER}} .it-testi-inner-dots .swiper-pagination-bullet-active' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
 $this->end_controls_tab();
 
 $this->end_controls_tabs();

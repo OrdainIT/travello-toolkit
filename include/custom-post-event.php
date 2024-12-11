@@ -1,28 +1,31 @@
 <?php
+
 /**
  * 
  */
-class OdPortfolioPost
+class OdEventPost
 {
-	
+
 	function __construct()
 	{
-		
+
 		add_action('init', array($this, 'register_custom_post_type'));
-        add_action('init', array($this, 'create_cat'));
-        add_filter('template_include', array($this, 'portfolio_template_include'));
+		add_action('init', array($this, 'create_cat'));
+		add_filter('template_include', array($this, 'event_template_include'));
 	}
 
-	public function portfolio_template_include($template) {
-		if (is_singular('portfolios')) {
-			return $this->get_template('single-portfolios.php');
+	public function event_template_include($template)
+	{
+		if (is_singular('events')) {
+			return $this->get_template('single-events.php');
 		}
 		return $template;
 	}
 
 
 
-	public function get_template($template) {
+	public function get_template($template)
+	{
 		if ($theme_file = locate_template(array($template))) {
 			$file = $theme_file;
 		} else {
@@ -32,16 +35,17 @@ class OdPortfolioPost
 	}
 
 
-	public function register_custom_post_type() {
+	public function register_custom_post_type()
+	{
 		$labels = array(
-			'name'                  => esc_html_x('Portfolios', 'Post Type General Name', 'ordainit-toolkit'),
-			'singular_name'         => esc_html_x('Portfolio', 'Post Type Singular Name', 'ordainit-toolkit'),
-			'menu_name'             => esc_html__('Portfolio', 'ordainit-toolkit'),
-			'name_admin_bar'        => esc_html__('Portfolio', 'ordainit-toolkit'),
+			'name'                  => esc_html_x('Events', 'Post Type General Name', 'ordainit-toolkit'),
+			'singular_name'         => esc_html_x('Event', 'Post Type Singular Name', 'ordainit-toolkit'),
+			'menu_name'             => esc_html__('Event', 'ordainit-toolkit'),
+			'name_admin_bar'        => esc_html__('Event', 'ordainit-toolkit'),
 			'archives'              => esc_html__('Item Archives', 'ordainit-toolkit'),
 			'parent_item_colon'     => esc_html__('Parent Item:', 'ordainit-toolkit'),
 			'all_items'             => esc_html__('All Items', 'ordainit-toolkit'),
-			'add_new_item'          => esc_html__('Add New Portfolio', 'ordainit-toolkit'),
+			'add_new_item'          => esc_html__('Add New Event', 'ordainit-toolkit'),
 			'add_new'               => esc_html__('Add New', 'ordainit-toolkit'),
 			'new_item'              => esc_html__('New Item', 'ordainit-toolkit'),
 			'edit_item'             => esc_html__('Edit Item', 'ordainit-toolkit'),
@@ -62,7 +66,7 @@ class OdPortfolioPost
 		);
 
 		$args = array(
-			'label'                 => esc_html__('Portfolio', 'ordainit-toolkit'),
+			'label'                 => esc_html__('Event', 'ordainit-toolkit'),
 			'labels'                => $labels,
 			'supports'              => array('title', 'editor', 'excerpt', 'thumbnail'),
 			'hierarchical'          => false,
@@ -81,31 +85,32 @@ class OdPortfolioPost
 			'show_in_rest'          => true,
 		);
 
-		register_post_type('portfolios', $args);
+		register_post_type('events', $args);
 	}
 
-public function create_cat() {
+	public function create_cat()
+	{
 		$labels = array(
-			'name'                       => esc_html_x('Portfolio Categories', 'Taxonomy General Name', 'ordainit-toolkit'),
-			'singular_name'              => esc_html_x('Portfolio Categories', 'Taxonomy Singular Name', 'ordainit-toolkit'),
-			'menu_name'                  => esc_html__('Portfolio Categories', 'ordainit-toolkit'),
-			'all_items'                  => esc_html__('All Portfolio Category', 'ordainit-toolkit'),
+			'name'                       => esc_html_x('Event Categories', 'Taxonomy General Name', 'ordainit-toolkit'),
+			'singular_name'              => esc_html_x('Event Categories', 'Taxonomy Singular Name', 'ordainit-toolkit'),
+			'menu_name'                  => esc_html__('Event Categories', 'ordainit-toolkit'),
+			'all_items'                  => esc_html__('All Event Category', 'ordainit-toolkit'),
 			'parent_item'                => esc_html__('Parent Item', 'ordainit-toolkit'),
 			'parent_item_colon'          => esc_html__('Parent Item:', 'ordainit-toolkit'),
-			'new_item_name'              => esc_html__('New Portfolio Category Name', 'ordainit-toolkit'),
-			'add_new_item'               => esc_html__('Add New Portfolio Category', 'ordainit-toolkit'),
-			'edit_item'                  => esc_html__('Edit Portfolio Category', 'ordainit-toolkit'),
-			'update_item'                => esc_html__('Update Portfolio Category', 'ordainit-toolkit'),
-			'view_item'                  => esc_html__('View Portfolio Category', 'ordainit-toolkit'),
+			'new_item_name'              => esc_html__('New Event Category Name', 'ordainit-toolkit'),
+			'add_new_item'               => esc_html__('Add New Event Category', 'ordainit-toolkit'),
+			'edit_item'                  => esc_html__('Edit Event Category', 'ordainit-toolkit'),
+			'update_item'                => esc_html__('Update Event Category', 'ordainit-toolkit'),
+			'view_item'                  => esc_html__('View Event Category', 'ordainit-toolkit'),
 			'separate_items_with_commas' => esc_html__('Separate items with commas', 'ordainit-toolkit'),
 			'add_or_remove_items'        => esc_html__('Add or remove items', 'ordainit-toolkit'),
 			'choose_from_most_used'      => esc_html__('Choose from the most used', 'ordainit-toolkit'),
-			'popular_items'              => esc_html__('Popular Portfolio Category', 'ordainit-toolkit'),
-			'search_items'               => esc_html__('Search Portfolio Category', 'ordainit-toolkit'),
+			'popular_items'              => esc_html__('Popular Event Category', 'ordainit-toolkit'),
+			'search_items'               => esc_html__('Search Event Category', 'ordainit-toolkit'),
 			'not_found'                  => esc_html__('Not Found', 'ordainit-toolkit'),
-			'no_terms'                   => esc_html__('No Portfolio Category', 'ordainit-toolkit'),
-			'items_list'                 => esc_html__('Portfolio Category list', 'ordainit-toolkit'),
-			'items_list_navigation'      => esc_html__('Portfolio Category list navigation', 'ordainit-toolkit'),
+			'no_terms'                   => esc_html__('No Event Category', 'ordainit-toolkit'),
+			'items_list'                 => esc_html__('Event Category list', 'ordainit-toolkit'),
+			'items_list_navigation'      => esc_html__('Event Category list navigation', 'ordainit-toolkit'),
 		);
 
 		$args = array(
@@ -119,14 +124,8 @@ public function create_cat() {
 			'show_in_rest'               => true,
 		);
 
-		register_taxonomy('portfolio-cat', 'portfolios', $args);
+		register_taxonomy('event-cat', 'events', $args);
 	}
-
-
-
-
-
-
 }
 
-new OdPortfolioPost();
+new OdEventPost();

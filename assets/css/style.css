@@ -50,3 +50,15 @@ h3.it-discover-passenger-categories span {
 .elementor-widget-container .it-testi-2-area .it-testi-2-thumb img {
   border-radius: 170px 10px 10px 10px;
 }
+
+/* Testimonial 5 img */
+
+.elementor-widget-container .it-testi-inner-avater img {
+  border-radius: 50%;
+  border: 1px dashed var(--it-theme-1);
+}
+
+/* Team social box */
+.elementor-widget-container .it-team-social-box {
+  padding: 10px 20px !important;
+}
