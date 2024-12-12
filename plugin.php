@@ -221,6 +221,9 @@ class OD_Core_Plugin
 			'portfolio',
 			'stories',
 			'tour-post',
+			'contact-form',
+			'newsletter',
+			'slider',
 		];
 	}
 
