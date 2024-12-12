@@ -153,25 +153,286 @@ $this->end_controls_section();
 // Style starts
 
 $this->start_controls_section(
-    'section_style',
+    'od_tour_category_style',
     [
-        'label' => __('Style', 'ordainit-toolkit'),
+        'label' => __('Category Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
 
-
-$this->start_controls_tabs(
-    'style_tabs'
-);
-
-$this->start_controls_tab(
-    'style_normal_tab',
+$this->add_control(
+    'od_tour_category_style_area_bg_color',
     [
-        'label' => esc_html__('Normal', 'textdomain'),
+        'label' => esc_html__('Category Area BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .black-bg' => 'background-color: {{VALUE}}',
+        ],
     ]
 );
 
+$this->end_controls_section();
+
+$this->start_controls_section(
+    'od_tour_category_heading_style',
+    [
+        'label' => __('Category Heading Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+//Title Style
+$this->add_control(
+    'od_tour_category_heading_title_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_tour_category_heading_title_typography',
+        'selector' => '{{WRAPPER}} .it-section-title',
+    ]
+);
+
+//Subtitle Style
+$this->add_control(
+    'od_tour_category_heading_subtitle_color',
+    [
+        'label' => esc_html__('Subtitle Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-subtitle' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Subtitle Typography', 'ordainit-toolkit'),
+        'name' => 'od_tour_category_heading_subtitle_typography',
+        'selector' => '{{WRAPPER}} .it-section-subtitle',
+    ]
+);
+
+$this->end_controls_section();
+
+// Category Content style
+$this->start_controls_section(
+    'od_tour_category_content_style',
+    [
+        'label' => __('Category Content Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_tour_category_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_tour_category_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_title_normal_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_icon_box_normal_bg_color',
+    [
+        'label' => esc_html__('Icon Box BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-icon span' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_item_box_normal_bg_color',
+    [
+        'label' => esc_html__('Item Box BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-item' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+//Hover style
+$this->start_controls_tab(
+    'od_tour_category_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_title_hover_color',
+    [
+        'label' => esc_html__('Title Hover Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-item:hover .it-categories-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_icon_box_hover_bg_color',
+    [
+        'label' => esc_html__('Icon Box Hover BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-item:hover .it-categories-icon span' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_tour_category_style_item_box_hover_bg_color',
+    [
+        'label' => esc_html__('Item Box Hover BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-item:hover' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->end_controls_tabs();
+
+$this->add_control(
+    'hr',
+    [
+        'type' => \Elementor\Controls_Manager::DIVIDER,
+    ]
+);
+
+//Title Typo
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_tour_category_style_title_typography',
+        'selector' => '{{WRAPPER}} .it-categories-title',
+    ]
+);
+
+$this->end_controls_section();
+
+
+// Arrow Style
+$this->start_controls_section(
+    'od_tour_category_arrow_style',
+    [
+        'label' => __('Category Arrow Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_tour_category_arrow_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_tour_category_arrow_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_normal_bg_color',
+    [
+        'label' => esc_html__('Arrow BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button' => 'background-color: {{VALUE}}',
+
+        ],
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_normal_color',
+    [
+        'label' => esc_html__('Arrow Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_normal_border_color',
+    [
+        'label' => esc_html__('Arrow Border Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button' => 'border-color: {{VALUE}}',
+        ],
+    ]
+);
+$this->end_controls_tab();
+
+$this->start_controls_tab(
+    'od_tour_category_arrow_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_hover_bg_color',
+    [
+        'label' => esc_html__('Arrow BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button:hover' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_hover_color',
+    [
+        'label' => esc_html__('Arrow Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button:hover' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_tour_category_arrow_style_hover_border_color',
+    [
+        'label' => esc_html__('Arrow Border Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-categories-arrow-box button:hover' => 'border-color: {{VALUE}}',
+        ],
+    ]
+);
 $this->end_controls_tab();
 
 $this->end_controls_tabs();

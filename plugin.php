@@ -218,6 +218,9 @@ class OD_Core_Plugin
 			'contact-box',
 			'tour-category',
 			'tour-post',
+			'gallery-img',
+			'portfolio',
+			'stories',
 		];
 	}
 
