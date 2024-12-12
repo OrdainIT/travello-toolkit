@@ -4,7 +4,7 @@
  * Plugin Name: Ordainit Toolkit
  * Description: Ordainit Toolkit plugin.
  * Plugin URI:  htods://ordainit.com/
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Ordainit
  * Author URI:  htods://ordainit.com/
  * Text Domain: ordainit-toolkit
