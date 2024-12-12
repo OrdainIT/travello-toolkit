@@ -220,6 +220,7 @@ class OD_Core_Plugin
 			'gallery-img',
 			'portfolio',
 			'stories',
+			'tour-post',
 		];
 	}
 

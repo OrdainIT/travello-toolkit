@@ -31,19 +31,16 @@ define('ORDAINIT_TOOLKIT_INCLUDE_PATH', ORDAINIT_TOOLKIT_ADDONS_DIR . '/include'
 /**
  * Include all files
  */
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-team.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-services.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-portfolio.php');
+//include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-team.php');
+//include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-services.php');
+include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-event.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-post-megamenu.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/common-functions.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/class-ocdi-importer.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/allow-svg.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/acf-meta/team-meta.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/acf-meta/portfolio-meta.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/acf-meta/services-meta.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/od-woocommerce-functions.php');
 include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/tour/od-tour.php');
-include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/tour/tour-functions.php');
+include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/lib/codestar-framework/codestar-framework.php');
 
 
 /**
@@ -54,13 +51,7 @@ include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-sidebar-form-widget.php');
 include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-portfolio-info-widget.php');
 include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-service-list.php');
 include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-sidebar-post.php');
-function shofy_coupon_init()
-{
-	if (class_exists('Theme_Register')) {
-		// include_once(plugin_dir_path(__FILE__) . '/include/code-check.php');
-	}
-}
-add_action('init', 'shofy_coupon_init');
+
 if (class_exists('Charitable_Campaign')) {
 	include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-donation-post.php');
 }
