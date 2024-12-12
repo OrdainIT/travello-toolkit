@@ -144,6 +144,8 @@ $this->add_control(
 
 $this->end_controls_section();
 
+// Style Starts
+
 $this->start_controls_section(
     'od_portfolio_heading_style',
     [
@@ -196,27 +198,27 @@ $this->end_controls_section();
 
 // Masonry Btn Style
 $this->start_controls_section(
-    'od_portfolio_masonry_btn_style',
+    'od_portfolio_masonry_tab_btn_style',
     [
-        'label' => __('Masonry Btn Style', 'ordainit-toolkit'),
+        'label' => __('Masonry Tab Btn Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
 
 $this->start_controls_tabs(
-    'od_portfolio_masonry_btn_style_tabs'
+    'od_portfolio_masonry_tab_btn_style_tabs'
 );
 
 // Active
 $this->start_controls_tab(
-    'od_portfolio_masonry_btn_style_active_tab',
+    'od_portfolio_masonry_tab_btn_style_active_tab',
     [
         'label' => esc_html__('Active', 'ordainit-toolkit'),
     ]
 );
 
 $this->add_control(
-    'od_portfolio_masonry_btn_hover_color',
+    'od_portfolio_masonry_tab_btn_hover_color',
     [
         'label' => esc_html__('Button Color', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::COLOR,
@@ -228,7 +230,7 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_portfolio_masonry_btn_bg_hover_color',
+    'od_portfolio_masonry_tab_btn_bg_hover_color',
     [
         'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::COLOR,
@@ -243,14 +245,14 @@ $this->end_controls_tab();
 
 // Normal
 $this->start_controls_tab(
-    'od_portfolio_masonry_btn_style_normal_tab',
+    'od_portfolio_masonry_tab_btn_style_normal_tab',
     [
         'label' => esc_html__('Normal', 'ordainit-toolkit'),
     ]
 );
 
 $this->add_control(
-    'od_portfolio_masonry_btn_color',
+    'od_portfolio_masonry_tab_btn_color',
     [
         'label' => esc_html__('Button Color', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::COLOR,
@@ -261,12 +263,153 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_portfolio_masonry_btn_bg_color',
+    'od_portfolio_masonry_tab_btn_bg_color',
     [
         'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
             '{{WRAPPER}} .it-portfolio-filter .masonary-menu button' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->end_controls_tabs();
+
+$this->end_controls_section();
+
+// Masonry Content Style
+$this->start_controls_section(
+    'od_portfolio_masonry_content_style',
+    [
+        'label' => __('Masonry Content Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+//Title
+$this->add_control(
+    'od_portfolio_masonry_title_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_title_hover_color',
+    [
+        'label' => esc_html__('Title Hover Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-title:hover a' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_portfolio_masonry_title_typography',
+        'selector' => '{{WRAPPER}} .it-inner-destination .it-dest-title',
+    ]
+);
+
+//Subtitle
+$this->add_control(
+    'od_portfolio_masonry_subtitle_color',
+    [
+        'label' => esc_html__('SubTitle Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-content span' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Subtitle Typography', 'ordainit-toolkit'),
+        'name' => 'od_portfolio_masonry_subtitle_typography',
+        'selector' => '{{WRAPPER}} .it-inner-destination .it-dest-content span',
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_btn_heading',
+    [
+        'label' => esc_html__('Button Style', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::HEADING,
+        'separator' => 'before',
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_portfolio_masonry_btn_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_portfolio_masonry_btn_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_btn_style_normal_color',
+    [
+        'label' => esc_html__('Btn Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-icon a' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_btn_style_normal_bg_color',
+    [
+        'label' => esc_html__('Btn BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-icon a' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->start_controls_tab(
+    'od_portfolio_masonry_btn_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_btn_style_hover_color',
+    [
+        'label' => esc_html__('Btn Hover Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-icon a:hover' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_portfolio_masonry_btn_style_hover_bg_color',
+    [
+        'label' => esc_html__('Btn Hover BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-inner-destination .it-dest-icon a:hover' => 'background-color: {{VALUE}}',
         ],
     ]
 );

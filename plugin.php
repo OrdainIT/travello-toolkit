@@ -217,10 +217,10 @@ class OD_Core_Plugin
 			'team-slider',
 			'contact-box',
 			'tour-category',
-			'tour-post',
 			'gallery-img',
 			'portfolio',
 			'stories',
+			'tour-post',
 		];
 	}
 
