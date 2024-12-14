@@ -157,7 +157,7 @@ class OD_Hero_Banner extends Widget_Base
             }
         ?>
 
-            <div class="it-hero-area fix it-hero-overlay it-hero-height it-hero-bg p-relative" style="background-image: url('<?php echo $od_section_background_image['url'] ?>');">
+            <div class="it-hero-area fix it-hero-overlay it-hero-height it-hero-bg p-relative" style="background-image: url('<?php echo esc_url($od_section_background_image['url'], 'ordainit-toolkit'); ?>')">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-7 col-lg-7">
