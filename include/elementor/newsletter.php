@@ -143,26 +143,26 @@ class Od_Newsletter extends Widget_Base
         $od_newsletter_title_content_title = $settings['od_newsletter_title_content_title'];
         $od_newsletter_title_content_subtitle = $settings['od_newsletter_title_content_subtitle'];
         $od_newsletter_contact_form = $settings['od_newsletter_contact_form_list'];
-        $od_newsletter_title_content_shap_1 = $settings['od_newsletter_title_content_shap_1'];
-        $od_newsletter_title_content_shap_2 = $settings['od_newsletter_title_content_shap_2'];
-        $od_newsletter_title_content_shap_3 = $settings['od_newsletter_title_content_shap_3'];
+        $od_newsletter_title_content_shape_1 = $settings['od_newsletter_title_content_shape_1'];
+        $od_newsletter_title_content_shape_2 = $settings['od_newsletter_title_content_shape_2'];
+        $od_newsletter_title_content_shape_3 = $settings['od_newsletter_title_content_shape_3'];
 ?>
 
         <div class="it-newsletter-area it-newsletter-height fix p-relative theme-bg-2">
             <div class="it-newsletter-shape-1 d-none d-lg-block">
-                <img src="<?php echo esc_url($od_newsletter_title_content_shap_1['url'], 'ordainit-toolkit'); ?>" alt="">
+                <img src="<?php echo esc_url($od_newsletter_title_content_shape_1['url'], 'ordainit-toolkit'); ?>" alt="">
             </div>
             <div class="it-newsletter-shape-2 d-none d-lg-block">
-                <img src="<?php echo esc_url($od_newsletter_title_content_shap_2['url'], 'ordainit-toolkit'); ?>" alt="">
+                <img src="<?php echo esc_url($od_newsletter_title_content_shape_2['url'], 'ordainit-toolkit'); ?>" alt="">
             </div>
             <div class="it-newsletter-shape-3 d-none d-xl-block">
-                <img src="<?php echo esc_url($od_newsletter_title_content_shap_3['url'], 'ordainit-toolkit'); ?>" alt="">
+                <img src="<?php echo esc_url($od_newsletter_title_content_shape_3['url'], 'ordainit-toolkit'); ?>" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="it-newsletter-left">
-                            <h4 class="it-section-title text-white"><?php echo esc_html($od_newsletter_title_content_title, 'ordainit-toolkit'); ?></h4>
+                            <h4 class="it-section-title"><?php echo esc_html($od_newsletter_title_content_title, 'ordainit-toolkit'); ?></h4>
                             <?php if (!empty($od_newsletter_title_content_subtitle)): ?>
                                 <span><?php echo esc_html($od_newsletter_title_content_subtitle, 'ordainit-toolkit'); ?></span>
                             <?php endif; ?>

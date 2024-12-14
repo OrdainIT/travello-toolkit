@@ -54,35 +54,140 @@ $this->add_control(
     ]
 );
 
-
-
-
-
-
 $this->end_controls_section();
 
+
+
+// Style Starts
 $this->start_controls_section(
-    'section_style',
+    'od_slider_content_style',
     [
-        'label' => __('Style', 'ordainit-toolkit'),
+        'label' => __('Content Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
 
 $this->add_control(
-    'text_transform',
+    'od_slider_content_title_color',
     [
-        'label' => __('Text Transform', 'ordainit-toolkit'),
-        'type' => Controls_Manager::SELECT,
-        'default' => '',
-        'options' => [
-            '' => __('None', 'ordainit-toolkit'),
-            'uppercase' => __('UPPERCASE', 'ordainit-toolkit'),
-            'lowercase' => __('lowercase', 'ordainit-toolkit'),
-            'capitalize' => __('Capitalize', 'ordainit-toolkit'),
-        ],
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
-            '{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+            '{{WRAPPER}} .it-slider-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_slider_content_title_typography',
+        'selector' => '{{WRAPPER}} .it-slider-title',
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_subtitle_color',
+    [
+        'label' => esc_html__('Sub Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-subtitle' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Sub Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_slider_content_subtitle_typography',
+        'selector' => '{{WRAPPER}} .it-section-subtitle',
+    ]
+);
+
+
+$this->end_controls_section();
+
+$this->start_controls_section(
+    'od_slider_content_form_style',
+    [
+        'label' => __('Content Form Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_form_bg_color',
+    [
+        'label' => esc_html__('Form BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-tour-package-box' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_form_package_title_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-tour-package-title' => 'color: {{VALUE}}',
+            '{{WRAPPER}} .it-tour-package-icon i' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_slider_content_form_package_title_typography',
+        'selector' => '{{WRAPPER}} .it-tour-package-title',
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_form_placeholder_color',
+    [
+        'label' => esc_html__('Placeholder Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-tour-package-text input::placeholder' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Placeholder Typography', 'ordainit-toolkit'),
+        'name' => 'od_slider_content_form_placeholder_typography',
+        'selector' => '{{WRAPPER}} .it-tour-package-text input',
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_form_btn_color',
+    [
+        'label' => esc_html__('Button Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-slider-tour-style .it-tour-package-search button' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_control(
+    'od_slider_content_form_btn_bg_color',
+    [
+        'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-slider-tour-style .it-tour-package-search button' => 'background-color: {{VALUE}}',
         ],
     ]
 );

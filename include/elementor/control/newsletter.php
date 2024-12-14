@@ -34,14 +34,14 @@ $this->add_control(
 $this->end_controls_section();
 
 $this->start_controls_section(
-    'od_newsletter_title_content_shap',
+    'od_newsletter_title_content_shape',
     [
-        'label' => __('Shap', 'ordainit-toolkit'),
+        'label' => __('shape', 'ordainit-toolkit'),
     ]
 );
 
 $this->add_control(
-    'od_newsletter_title_content_shap_1',
+    'od_newsletter_title_content_shape_1',
     [
         'label' => esc_html__('Image 1', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -53,7 +53,7 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_newsletter_title_content_shap_2',
+    'od_newsletter_title_content_shape_2',
     [
         'label' => esc_html__('Image 2', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -65,7 +65,7 @@ $this->add_control(
 );
 
 $this->add_control(
-    'od_newsletter_title_content_shap_3',
+    'od_newsletter_title_content_shape_3',
     [
         'label' => esc_html__('Image 3', 'ordainit-toolkit'),
         'type' => \Elementor\Controls_Manager::MEDIA,
@@ -101,28 +101,184 @@ $this->add_control(
 $this->end_controls_section();
 
 $this->start_controls_section(
-    'section_style',
+    'od_newsletter_style',
     [
-        'label' => __('Style', 'ordainit-toolkit'),
+        'label' => __('Newsletter Style', 'ordainit-toolkit'),
         'tab' => Controls_Manager::TAB_STYLE,
     ]
 );
 
 $this->add_control(
-    'text_transform',
+    'od_newsletter_bg_color',
     [
-        'label' => __('Text Transform', 'ordainit-toolkit'),
-        'type' => Controls_Manager::SELECT,
-        'default' => '',
-        'options' => [
-            '' => __('None', 'ordainit-toolkit'),
-            'uppercase' => __('UPPERCASE', 'ordainit-toolkit'),
-            'lowercase' => __('lowercase', 'ordainit-toolkit'),
-            'capitalize' => __('Capitalize', 'ordainit-toolkit'),
-        ],
+        'label' => esc_html__('Newsletter BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
         'selectors' => [
-            '{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+            '{{WRAPPER}} .theme-bg-2' => 'background-color: {{VALUE}}',
         ],
+    ]
+);
+$this->add_control(
+    'od_newsletter_title_color',
+    [
+        'label' => esc_html__('Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-title' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_newsletter_title_typography',
+        'selector' => '{{WRAPPER}} .it-section-title',
+    ]
+);
+
+$this->add_control(
+    'od_newsletter_subtitle_color',
+    [
+        'label' => esc_html__('Sub Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-newsletter-left span' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Sub Title Typography', 'ordainit-toolkit'),
+        'name' => 'od_newsletter_subtitle_typography',
+        'selector' => '{{WRAPPER}} .it-newsletter-left span',
+    ]
+);
+
+
+$this->end_controls_section();
+
+
+$this->start_controls_section(
+    'od_newsletter_contact_form_style',
+    [
+        'label' => __('Newsletter Form Style', 'ordainit-toolkit'),
+        'tab' => Controls_Manager::TAB_STYLE,
+    ]
+);
+
+$this->add_control(
+    'od_newsletter_contact_form_input_bg_color',
+    [
+        'label' => esc_html__('Input BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-newsletter-right input' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_newsletter_contact_form_placeholder_color',
+    [
+        'label' => esc_html__('Placeholder Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-newsletter-right input::placeholder' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Placeholder Typography', 'ordainit-toolkit'),
+        'name' => 'od_newsletter_contact_form_placeholder_typography',
+        'selector' => '{{WRAPPER}} .it-newsletter-right input',
+    ]
+);
+
+$this->add_control(
+    'hr',
+    [
+        'type' => \Elementor\Controls_Manager::DIVIDER,
+    ]
+);
+
+$this->start_controls_tabs(
+    'od_newsletter_contact_form_style_tabs'
+);
+
+$this->start_controls_tab(
+    'od_newsletter_contact_form_style_normal_tab',
+    [
+        'label' => esc_html__('Normal', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_newsletter_contact_form_btn_color',
+    [
+        'label' => esc_html__('Button Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-secondary' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_newsletter_contact_form_btn_bg_color',
+    [
+        'label' => esc_html__('Button BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-secondary' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->start_controls_tab(
+    'od_newsletter_contact_form_style_hover_tab',
+    [
+        'label' => esc_html__('Hover', 'ordainit-toolkit'),
+    ]
+);
+
+$this->add_control(
+    'od_newsletter_contact_form_btn_hover_color',
+    [
+        'label' => esc_html__('Button Hover Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-secondary:hover' => 'color: {{VALUE}}',
+        ],
+    ]
+);
+$this->add_control(
+    'od_newsletter_contact_form_btn_hover_bg_color',
+    [
+        'label' => esc_html__('Button Hover BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-btn-secondary:hover' => 'background-color: {{VALUE}}',
+        ],
+    ]
+);
+
+$this->end_controls_tab();
+
+$this->end_controls_tabs();
+
+$this->add_group_control(
+    \Elementor\Group_Control_Typography::get_type(),
+    [
+        'label' => esc_html__('Button Typography', 'ordainit-toolkit'),
+        'name' => 'od_newsletter_contact_form_btn_typography',
+        'selector' => '{{WRAPPER}} .it-btn-secondary',
     ]
 );
 

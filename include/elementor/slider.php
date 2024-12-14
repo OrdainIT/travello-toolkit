@@ -141,7 +141,7 @@ class Od_slider extends Widget_Base
                                         <div class="row justify-content-center">
                                             <div class="col-xl-10">
                                                 <div class="it-slider-title-box text-center mb-85 z-index">
-                                                    <span class="it-section-subtitle text-white"><?php echo od_kses($single_slider_item['od_slider_content_list_subtitle'], 'ordainit-toolkit'); ?></span>
+                                                    <span class="it-section-subtitle"><?php echo od_kses($single_slider_item['od_slider_content_list_subtitle'], 'ordainit-toolkit'); ?></span>
                                                     <h3 class="it-slider-title"><?php echo od_kses($single_slider_item['od_slider_content_list_title'], 'ordainit-toolkit'); ?></h3>
                                                 </div>
                                             </div>
