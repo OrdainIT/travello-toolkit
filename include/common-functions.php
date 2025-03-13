@@ -855,3 +855,41 @@ function medito_add_admin_menu()
     add_menu_page('RTL Settings', 'RTL Settings', 'manage_options', 'mcssa_rtl', 'mcssa_rtl_admin_page');
 }
 add_action('admin_menu', 'medito_add_admin_menu');
+
+
+
+
+function od_get_tour_package_types()
+{
+    $terms = get_terms([
+        'taxonomy'   => 'tour-package-type',
+        'hide_empty' => false, // Show even if no posts are assigned
+    ]);
+
+    $options = [];
+    if (!empty($terms) && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $options[$term->term_id] = $term->name; // Store ID as key, name as value
+        }
+    }
+
+    return $options;
+}
+
+
+function od_get_tour_package_destinations()
+{
+    $terms = get_terms([
+        'taxonomy'   => 'tour-package-destination',
+        'hide_empty' => false, // Show all terms, even if no posts are assigned
+    ]);
+
+    $options = [];
+    if (!empty($terms) && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $options[$term->term_id] = $term->name; // Store ID as key, name as value
+        }
+    }
+
+    return $options;
+}

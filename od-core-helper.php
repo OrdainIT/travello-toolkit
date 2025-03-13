@@ -52,9 +52,20 @@ include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-portfolio-info-widget.php');
 include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-service-list.php');
 include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-sidebar-post.php');
 
-if (class_exists('Charitable_Campaign')) {
-	include_once(ORDAINIT_TOOLKIT_WIDGET_PATH . '/od-donation-post.php');
+
+// custom container control
+
+function load_custom_container_control()
+{
+	// Check if Elementor is active
+	if (did_action('elementor/loaded')) {
+		include_once(ORDAINIT_TOOLKIT_ADDONS_DIR . '/include/custom-container-control.php');
+	}
 }
+add_action('plugins_loaded', 'load_custom_container_control');
+
+
+
 // include_once(ordainit-toolkit_WIDGET_PATH . '/od-latest-posts-footer.php');
 
 

@@ -4,6 +4,8 @@
 
 use Elementor\Widget_Base;
 
+use Elementor\Controls_Manager;
+
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
@@ -104,7 +106,193 @@ class Od_Tour_Post extends Widget_Base
      */
     protected function register_controls()
     {
-        include_once(ORDAINIT_TOOLKIT_ELEMENTS_PATH . '/control/tour-post.php');
+        // layout Panel
+        $this->start_controls_section(
+            'od_layout',
+            [
+                'label' => esc_html__('Design Layout', 'ordainit-toolkit'),
+            ]
+        );
+        $this->add_control(
+            'od_design_style',
+            [
+                'label' => esc_html__('Select Layout', 'ordainit-toolkit'),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'layout-1' => esc_html__('Layout 1', 'ordainit-toolkit'),
+                    'layout-2' => esc_html__('Layout 2', 'ordainit-toolkit'),
+                    'layout-3' => esc_html__('Layout 3', 'ordainit-toolkit'),
+                    'layout-4' => esc_html__('Layout 4', 'ordainit-toolkit'),
+                    'layout-5' => esc_html__('Layout 5', 'ordainit-toolkit'),
+                ],
+                'default' => 'layout-1',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'od_tour_post_title_content',
+            [
+                'label' => __('Title & Content', 'ordainit-toolkit'),
+                'condition' => [
+                    'od_design_style' => ['layout-5'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'od_tour_post_title_content_title',
+            [
+                'label' => esc_html__('Title', 'ordainit-toolkit'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Amazing tour Places around the world', 'ordainit-toolkit'),
+                'placeholder' => esc_html__('Type your title here', 'ordainit-toolkit'),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'od_tour_post_title_content_subtitle',
+            [
+                'label' => esc_html__('Sub Title', 'ordainit-toolkit'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Featured Tours', 'ordainit-toolkit'),
+                'placeholder' => esc_html__('Type your title here', 'ordainit-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'od_tour_post_title_content_shap',
+            [
+                'label' => esc_html__('Shap', 'ordainit-toolkit'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'od_tour_post_query',
+            [
+                'label' => __('Tour Post Query', 'ordainit-toolkit'),
+            ]
+        );
+
+
+        $post_type = 'tour-package';
+
+        $this->add_control(
+            'posts_per_page',
+            [
+                'label' => esc_html__('Posts Per Page', 'ordainit-toolkit'),
+                'description' => esc_html__('Leave blank or enter -1 for all.', 'tvcore'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => '3',
+            ]
+        );
+
+        $this->add_control(
+            'tour_post_order',
+            [
+                'label' => esc_html__('Orderby', 'ordainit-toolkit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'asc',
+                'options' => [
+                    'asc' => esc_html__('ASC', 'ordainit-toolkit'),
+                    'desc' => esc_html__('DESC', 'ordainit-toolkit'),
+                ],
+            ]
+        );
+
+
+
+        $this->add_control(
+            'tour_package_type_select',
+            [
+                'label'    => __('Select Tour Package Types', 'text-domain'),
+                'type'     => \Elementor\Controls_Manager::SELECT2,
+                'options'  => od_get_tour_package_types(),
+                'multiple' => true, // Enable multiple selection
+                'default'  => [],
+            ]
+        );
+
+        $this->add_control(
+            'tour_package_destination_select',
+            [
+                'label'    => __('Select Tour Package Destinations', 'text-domain'),
+                'type'     => \Elementor\Controls_Manager::SELECT2,
+                'options'  => od_get_tour_package_destinations(), // Function to get destinations
+                'multiple' => true, // Enable multiple selection
+                'default'  => [],
+            ]
+        );
+
+
+
+
+
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'od_tour_post_button',
+            [
+                'label' => __('Button', 'ordainit-toolkit'),
+                'condition' => [
+                    'od_design_style' => ['layout-1', 'layout-2', 'layout-3'],
+                ],
+            ]
+        );
+
+
+
+        $this->add_control(
+            'od_tour_post_button_text',
+            [
+                'label' => esc_html__('Button Text', 'ordainit-toolkit'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Explore More', 'ordainit-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style',
+            [
+                'label' => __('Style', 'ordainit-toolkit'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'text_transform',
+            [
+                'label' => __('Text Transform', 'ordainit-toolkit'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '',
+                'options' => [
+                    '' => __('None', 'ordainit-toolkit'),
+                    'uppercase' => __('UPPERCASE', 'ordainit-toolkit'),
+                    'lowercase' => __('lowercase', 'ordainit-toolkit'),
+                    'capitalize' => __('Capitalize', 'ordainit-toolkit'),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -119,18 +307,50 @@ class Od_Tour_Post extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+
+
         $posts_per_page = $settings['posts_per_page'];
         $tour_post_order = $settings['tour_post_order'];
+        $tour_package_type_select = $settings['tour_package_type_select'];
+        $tour_package_destination_select = $settings['tour_package_destination_select'];
         $od_tour_post_button_text = $settings['od_tour_post_button_text'];
 
-
-
-        $args = array(
-            'post_type' => 'tour-package',
-            'post_status' => 'publish',
+        $args = [
+            'post_type'      => 'tour-package',
+            'post_status'    => 'publish',
             'posts_per_page' => $posts_per_page,
-            'order' => $tour_post_order,
-        );
+            'order'          => $tour_post_order,
+        ];
+
+
+        // Initialize tax query array
+        $tax_query = [];
+
+        // If Tour Package Type is selected, filter by selected types
+        if (!empty($tour_package_type_select)) {
+            $tax_query[] = [
+                'taxonomy' => 'tour-package-type',
+                'field'    => 'term_id',
+                'terms'    => $tour_package_type_select, // Multiple selections are allowed
+                'operator' => 'IN', // Show posts in any of the selected types
+            ];
+        }
+
+        // If Tour Package Destination is selected, filter by selected destinations
+        if (!empty($tour_package_destination_select)) {
+            $tax_query[] = [
+                'taxonomy' => 'tour-package-destination',
+                'field'    => 'term_id',
+                'terms'    => $tour_package_destination_select, // Multiple selections are allowed
+                'operator' => 'IN', // Show posts in any of the selected destinations
+            ];
+        }
+
+        // Add tax query only if there are filters applied
+        if (!empty($tax_query)) {
+            $args['tax_query'] = $tax_query;
+        }
+
 
         // The Query
         $query = new \WP_Query($args);
@@ -142,9 +362,11 @@ class Od_Tour_Post extends Widget_Base
 
                 <div class="it-featured-item-wrap mb-30">
                     <div class="row">
-                        <?php if ($query->have_posts()) : ?>
+                        <?php $i = -1;
+                        if ($query->have_posts()) : ?>
                             <?php while ($query->have_posts()) :
                                 $query->the_post();
+                                $i++;
 
 
                                 $post_id = get_the_ID(); // Dynamically get the post ID
@@ -170,7 +392,7 @@ class Od_Tour_Post extends Widget_Base
 
                             ?>
                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 wow itfadeUp" data-wow-duration=".9s"
-                                    data-wow-delay=".3s">
+                                    data-wow-delay="<?php echo esc_attr(.3 + $i * .2); ?>s">
                                     <div class="it-featured-item p-relative">
                                         <div class="it-featured-thumb p-relative">
                                             <img src="<?php the_post_thumbnail_url(); ?>" alt="">
@@ -276,9 +498,11 @@ class Od_Tour_Post extends Widget_Base
                 <div class="it-featured-item-wrap it-featured-style-3-space mb-30">
                     <div class="row">
 
-                        <?php if ($query->have_posts()) : ?>
+                        <?php $i = -1;
+                        if ($query->have_posts()) : ?>
                             <?php while ($query->have_posts()) :
                                 $query->the_post();
+                                $i++;
 
 
                                 $post_id = get_the_ID(); // Dynamically get the post ID
@@ -304,7 +528,7 @@ class Od_Tour_Post extends Widget_Base
 
                             ?>
                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 wow itfadeUp" data-wow-duration=".9s"
-                                    data-wow-delay=".3s">
+                                    data-wow-delay="<?php echo esc_attr(.3 + $i * .2); ?>s">
                                     <div class="it-featured-item p-relative">
                                         <div class="it-featured-thumb p-relative">
                                             <img src="<?php the_post_thumbnail_url(); ?>" alt="">
@@ -669,9 +893,12 @@ class Od_Tour_Post extends Widget_Base
 
             <div class="it-featured-item-wrap">
                 <div class="row">
-                    <?php if ($query->have_posts()) : ?>
+                    <?php
+                    $i = -1;
+                    if ($query->have_posts()) : ?>
                         <?php while ($query->have_posts()) :
                             $query->the_post();
+                            $i++;
 
 
                             $post_id = get_the_ID(); // Dynamically get the post ID
@@ -697,7 +924,7 @@ class Od_Tour_Post extends Widget_Base
 
                         ?>
                             <div class="col-xl-4 col-lg-6 col-md-6 wow itfadeUp" data-wow-duration=".9s"
-                                data-wow-delay=".3s">
+                                data-wow-delay="<?php echo esc_attr(.3 + $i * .2); ?>s">
                                 <div class="it-featured-item p-relative">
                                     <div class="it-featured-thumb p-relative">
                                         <img src="<?php the_post_thumbnail_url(); ?>" alt="">

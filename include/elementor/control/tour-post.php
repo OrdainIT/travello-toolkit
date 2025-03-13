@@ -100,11 +100,41 @@ $this->add_control(
         'type' => \Elementor\Controls_Manager::SELECT,
         'default' => 'asc',
         'options' => [
-            'asc' => esc_html__('ASC', 'textdomain'),
-            'desc' => esc_html__('DESC', 'textdomain'),
+            'asc' => esc_html__('ASC', 'ordainit-toolkit'),
+            'desc' => esc_html__('DESC', 'ordainit-toolkit'),
         ],
     ]
 );
+
+
+
+$this->add_control(
+    'tour_package_type_select',
+    [
+        'label'    => __('Select Tour Package Types', 'text-domain'),
+        'type'     => \Elementor\Controls_Manager::SELECT2,
+        'options'  => od_get_tour_package_types(),
+        'multiple' => true, // Enable multiple selection
+        'default'  => [],
+    ]
+);
+
+$this->add_control(
+    'tour_package_destination_select',
+    [
+        'label'    => __('Select Tour Package Destinations', 'text-domain'),
+        'type'     => \Elementor\Controls_Manager::SELECT2,
+        'options'  => od_get_tour_package_destinations(), // Function to get destinations
+        'multiple' => true, // Enable multiple selection
+        'default'  => [],
+    ]
+);
+
+
+
+
+
+
 
 $this->end_controls_section();
 

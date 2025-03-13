@@ -125,6 +125,20 @@ $this->add_control(
 
 $this->end_controls_tab();
 
+// button margin control
+
+$this->add_responsive_control(
+    'od_contact_form_btn_margin',
+    [
+        'label' => esc_html__('Button Margin', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::DIMENSIONS,
+        'size_units' => ['px', 'em', '%'],
+        'selectors' => [
+            '{{WRAPPER}} .it-newsletter-right button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+        ],
+    ]
+);
+
 $this->end_controls_tabs();
 
 $this->add_group_control(

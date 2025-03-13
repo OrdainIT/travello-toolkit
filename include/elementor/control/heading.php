@@ -117,6 +117,17 @@ $this->add_control(
         ],
     ]
 );
+// heading title color
+$this->add_control(
+    'od_heading_color_title_color',
+    [
+        'label' => esc_html__('Color Title Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-section-title span' => 'color: {{VALUE}}',
+        ],
+    ]
+);
 $this->add_group_control(
     \Elementor\Group_Control_Typography::get_type(),
     [

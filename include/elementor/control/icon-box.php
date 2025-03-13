@@ -53,6 +53,7 @@ $this->add_control(
             'fa-regular fa-badge-check' => __('Check', 'ordainit-toolkit'),
             'fa-regular fa-house-heart' => __('House', 'ordainit-toolkit'),
             'fa-sharp fa-solid fa-star' => __('Star', 'ordainit-toolkit'),
+            'flaticon-travel' => __('Travel', 'ordainit-toolkit'),
         ],
         'default' => 'flaticon-worker',
         'label_block' => true,
@@ -199,6 +200,25 @@ $this->add_control(
 
     ]
 );
+
+
+
+// Icon Size Control
+$this->add_responsive_control(
+    'od_icon_box_icon_size',
+    [
+        'label' => esc_html__('Icon Size', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::SLIDER,
+        'size_units' => ['px'],
+        'selectors' => [
+            '{{WRAPPER}} .it-about-service-icon span' => 'font-size: {{SIZE}}{{UNIT}};',
+        ],
+        'condition' => [
+            'od_design_style' => ['layout-1', 'layout-2', 'layout-3']
+        ],
+    ]
+);
+
 
 
 $this->end_controls_section();

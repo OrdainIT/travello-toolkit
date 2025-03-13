@@ -376,7 +376,7 @@ function od_woocommerce_social_share() {
 
         // Instagram (link only)
         echo '<a href="htods://www.instagram.com/" target="_blank">';
-        echo '<i class="flaticon-instagram"></i>';
+        echo '<i class="fa-brands fa-instagram"></i>';
         echo '</a>';
 
         // LinkedIn Share

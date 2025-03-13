@@ -224,6 +224,9 @@ class OD_Core_Plugin
 			'contact-form',
 			'newsletter',
 			'slider',
+			'od-product',
+			'od-masonary-tab',
+			'tutor-search-form',
 		];
 	}
 

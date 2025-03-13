@@ -31,7 +31,7 @@ h3.it-discover-passenger-categories span {
   border-radius: 50%;
   transition: 0.3s;
   background-color: var(--it-common-accent);
-  padding: 10px;
+  padding: 8px;
   width: 50px;
   height: 50px;
   line-height: 30px;
@@ -66,4 +66,58 @@ h3.it-discover-passenger-categories span {
 /* Category icon box color */
 .it-categories-item:hover .it-categories-icon span {
   background-color: #ff6525 !important;
+}
+
+.thumb-shape-2 {
+    width: 430px;
+    height: 440px;
+    position: absolute;
+    top: -10px;
+    rotate: -3deg;
+    left: -20px;
+    border-radius: 20px;
+    transform: scale(0.9);
+    border: 3px solid #1B75E8;
+}
+
+ .thumb-shape-1 {
+    position: absolute;
+    width: 430px;
+    height: 440px;
+    left: -20px;
+    top: -10px;
+    rotate: 3deg;
+    border-radius: 20px;
+    transform: scale(0.9);
+    border: 3px solid var(--it-common-white);
+}
+
+
+.it-testimonial-shape-2c {
+    position: absolute;
+    left: auto;
+    right: 13%;
+    top: -100px;
+    animation: itswing 1s forwards infinite alternate;
+    transform-origin: bottom center;
+}
+
+
+.elementor-widget-container .it-featured-item-wrap.it-featured-style-3-space {
+    padding: 0;
+}
+
+ .modal-content .it-product-details-nav-main-thumb img {
+    max-width: 370px;
+}
+
+
+.elementor-widget-container span.woocommerce-Price-amount.amount {
+    font-size: 14px;
+    margin-right: 0;
+}
+
+.it-tour-package-main.it-tour-search-widget {
+    position: relative;
+    bottom: 0;
 }

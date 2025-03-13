@@ -25,6 +25,19 @@ $this->add_control(
     ]
 );
 
+// Bg Color
+
+$this->add_control(
+    'od_destination_bg_color',
+    [
+        'label' => esc_html__('BG Color', 'ordainit-toolkit'),
+        'type' => \Elementor\Controls_Manager::COLOR,
+        'selectors' => [
+            '{{WRAPPER}} .it-destination-2-overlay::before' => 'background: {{VALUE}}',
+        ],
+    ]
+);
+
 $this->end_controls_section();
 
 $this->start_controls_section(
@@ -126,9 +139,6 @@ $this->add_control(
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => esc_html__('Sub Title', 'ordainit-toolkit'),
                 'label_block' => true,
-                'condition' => [
-                    'od_design_style' => ['layout-1', 'layout-2', 'layout-3'],
-                ],
             ],
             [
                 'name' => 'od_destination_slider_description',
